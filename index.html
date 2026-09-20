@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A public guest board sample for a live multi-agent coding demonstration.">
+    <title>Guestboard · Stage 7</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script type="module" src="/app.mjs"></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="/" aria-label="Guestboard home"><span class="brand-mark" aria-hidden="true">g.</span>guestboard<span class="brand-divider">/</span><span class="stage">STAGE 7</span></a>
+      <span class="demo-label"><span class="status-dot" aria-hidden="true"></span> A live engineering demo</span>
+    </header>
+    <main>
+      <section class="intro" aria-labelledby="page-title">
+        <p class="eyebrow">GOOD COMPANY. ONE SHARED BOARD.</p>
+        <h1 id="page-title">Make room for<br><span>everyone.</span></h1>
+        <p class="lede">Bring your people together. Import a guest list,<br class="desktop-break"> check the board, and see who's joining.</p>
+      </section>
+      <section class="workspace" aria-label="Guest list workspace">
+        <aside class="import-panel">
+          <div class="panel-heading"><span class="step-number">01</span><h2>Who's coming?</h2></div>
+          <p class="muted">Paste one handle per line. Imports replace this demo board, so it's easy to try another list.</p>
+          <form id="import-form">
+            <label for="guest-input">Guest handles</label>
+            <textarea id="guest-input" name="handles" rows="6" maxlength="4096" spellcheck="false" aria-describedby="input-help input-error"></textarea>
+            <p id="input-help" class="field-help">Same person, different spaces or casing? They should only count once.</p>
+            <p id="input-error" class="error" role="alert"></p>
+            <button class="primary" type="submit">Import guests <span aria-hidden="true">↗</span></button>
+          </form>
+          <button id="reset-demo" class="secondary" type="button">Reset demo</button>
+          <div class="scope-note"><span aria-hidden="true">◈</span><p>Just a demo. Synthetic handles only.<br>No accounts, invitations, or data uploads.</p></div>
+        </aside>
+        <section class="board-panel" aria-labelledby="board-title">
+          <div class="board-heading"><div><p class="eyebrow">THE GUEST LIST</p><h2 id="board-title">You're in good company.</h2></div><span class="board-tag">Stage 7 meetup</span></div>
+          <div class="board-summary"><div class="guest-total"><strong id="guest-count">0</strong><span>guests on the board</span></div><p id="board-status" role="status" aria-live="polite">Ready for your next import.</p></div>
+          <ul id="guest-list" class="guest-grid" aria-label="Guests"></ul>
+          <div id="empty-state" class="empty-state" hidden><span aria-hidden="true">✳</span><h3>The room is yours.</h3><p>Import a few names to get everyone together.</p></div>
+          <div class="board-footer"><span class="decorative-dots" aria-hidden="true">● ● ●</span><p>Different people. One place to meet.</p></div>
+        </section>
+      </section>
+      <footer class="footer"><span>Built for <strong>Loop Engineering in the Wild</strong> · powered by human + agent collaboration</span><span id="source-version">Demo workspace</span></footer>
+    </main>
+  </body>
+</html>

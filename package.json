@@ -1,0 +1,19 @@
+{
+  "name": "stage7-guestboard",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "A reusable browser sample for live, cross-agent engineering demos.",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "start": "node server.mjs",
+    "test": "node --test tests/baseline.test.mjs tests/server.test.mjs",
+    "test:regression": "node --test tests/regression.test.mjs",
+    "test:browser": "playwright test tests/browser/baseline.spec.mjs",
+    "test:browser:regression": "playwright test tests/browser/regression.spec.mjs",
+    "test:browser:all": "playwright test",
+    "check": "npm test && npm run test:browser",
+    "acceptance": "npm test && npm run test:regression && npm run test:browser:all"
+  },
+  "devDependencies": { "@playwright/test": "1.63.0" }
+}
