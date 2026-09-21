@@ -145,6 +145,9 @@ Talk naturally with teammates; do not use stage tokens or canned dialogue.
 Ask for review when work is ready, not when a presenter announces a phase.
 Report actual results and blockers.
 Never fabricate tests, memberships, source versions, or completed work.
+Never use `sleep` or shell polling to wait for Jam messages. Rely on injected
+Jam notifications, then immediately acknowledge or reply using the delivered
+message ID.
 
 `npm run check` covers the baseline's supported behavior.
 `npm run acceptance` adds the deliberately failing bug contract.
