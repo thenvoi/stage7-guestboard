@@ -65,6 +65,15 @@ Some coding runtimes cannot attach Jam Role files directly. In that case, provid
 
 See [the operator guide](docs/operator-guide.md) for the task, source handoff, preview, reset, and recording procedure. The complete Jam performance's live-provider validation is maintained separately; this repository alone does not establish its readiness.
 
+## Conference scenario
+
+The presenter runbook is [demo/SCENARIO_FLOW.md](demo/SCENARIO_FLOW.md). It stages a
+short terminal handoff followed by desktop coordination with the Engineering Manager,
+Product Manager, QA Engineer, Adversarial Reviewer, and an optional UI/UX check.
+`demo/scenario-control.json` turns the flow on and selects presenter-gated or continuous
+pacing. The audience-safe plan and live Jam architecture map are in
+[demo/WORK_PLAN.md](demo/WORK_PLAN.md).
+
 ## Scope
 
 This is a synthetic guest-list display, not an identity, invitation, authentication, or conference-registration system. Do not import personal attendee data. Roles are guidance, not security enforcement; use disposable, minimally privileged Docker/VM environments for audience-facing agents.

@@ -1,0 +1,13 @@
+{
+  "schema_version": 2,
+  "enabled": true,
+  "transition_mode": "hitl",
+  "cast": "full",
+  "execution_mode": "bounded-live",
+  "live_check": "node-regression-only",
+  "browser_check": "presenter-manual",
+  "allow_worktrees": false,
+  "allow_browser_automation": false,
+  "evidence_policy": "observed-only",
+  "sample_input": "Ada\n ada \nLin"
+}
