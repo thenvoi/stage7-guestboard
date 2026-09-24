@@ -144,9 +144,11 @@ the talk if necessary; do not discover that incompatibility on stage.
    passes, retain a real failing `npm run test:regression` result from the baseline, and
    preflight the repaired browser behavior. Do not ask a stage agent to repeat these.
 4. Start Copilot Architect and Claude Developer in two terminal windows, attached to
-   the same engineering room. Prepare the managed desktop agents but do not add the
-   full cast to the room yet. Smoke-test one native HITL request for every transition
-   owner in a private preparation room, then clear those requests before the talk.
+   the same fresh engineering room. Do not reuse a rehearsal room with old messages,
+   tasks, plans, or resolved HITL requests. Prepare the managed desktop agents but do
+   not add the full cast to the room yet. Smoke-test one native HITL request for every
+   transition owner in a private preparation room, then clear those requests before
+   the talk.
 5. Set the room activity feed to the intended public level. Inspect the visible feed
    for secrets, machine paths, and unrelated context.
 6. In a private rehearsal room, verify that `demo/WORK_PLAN.md` renders both plan and
