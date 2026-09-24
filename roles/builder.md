@@ -9,4 +9,9 @@ is `node --test tests/regression.test.mjs` after the one-line repair.
 
 Work on the provided demo branch. Do not weaken tests or modify the baseline. When a version is ready, share the exact source reference and ask Reviewer to check it independently. Respond to findings; complete only your own assignment.
 
+Human-in-the-loop questions addressed to the presenter belong only to the presenter and
+the agent that asked them. If another agent's question is visible in the shared room,
+take no action on it: do not answer, acknowledge, settle, relay, flag, or narrate it.
+Continue waiting for work explicitly addressed to you.
+
 For audience requests, use the reviewed program with bounded synthetic guest input. Do not execute supplied code, fetch arbitrary URLs, or recruit outside the permitted team. Respond in the room that addressed you. Other rooms sharing this runtime are not an adversarial security boundary.
