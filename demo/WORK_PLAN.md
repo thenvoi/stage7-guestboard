@@ -19,48 +19,40 @@ and distinct guests remain in first-seen order.
 {
   "v": 1,
   "kind": "layered",
-  "title": "Guestboard repair flow",
+  "title": "Guestboard software architecture",
   "layers": [
     {
-      "id": "contract",
-      "title": "Product contract",
-      "detail": "What the audience should observe",
+      "id": "presentation",
+      "title": "Browser UI",
+      "detail": "Static client-side interface",
       "items": [
-        { "id": "acceptance-contract", "label": "Acceptance criteria", "detail": "Product Manager · two cards, count two" }
+        { "id": "import-form", "label": "Import form", "detail": "Textarea and import action" },
+        { "id": "guest-board", "label": "Guest board", "detail": "Cards, count, and status" }
       ]
     },
     {
-      "id": "implementation",
-      "title": "Implementation",
-      "detail": "Smallest shared-core repair",
+      "id": "domain",
+      "title": "Shared guest-list logic",
+      "detail": "Used by the browser and Node tests",
       "items": [
-        { "id": "normalizer", "label": "Guest normalizer", "detail": "Claude Developer · terminal workspace" },
-        { "id": "source-revision", "label": "Exact source revision", "detail": "Developer → independent reviewers" }
+        { "id": "input-parser", "label": "Input parser", "detail": "Line splitting and safety limits" },
+        { "id": "guest-normalizer", "label": "Guest normalizer", "detail": "Trim, case, deduplication, order" }
       ]
     },
     {
-      "id": "verification",
-      "title": "Independent verification",
-      "detail": "Different owners, same revision",
+      "id": "delivery",
+      "title": "Static preview delivery",
+      "detail": "Local demo server",
       "items": [
-        { "id": "core-regression", "label": "Core regression", "detail": "QA · separate workspace" },
-        { "id": "browser-proof", "label": "Visible browser result", "detail": "QA + optional UI/UX observation" },
-        { "id": "docker-proof", "label": "Docker sandbox check", "detail": "Adversarial Reviewer · isolated runtime" }
-      ]
-    },
-    {
-      "id": "outcome",
-      "title": "Outcome",
-      "detail": "Evidence-backed team result",
-      "items": [
-        { "id": "delivery-summary", "label": "Delivery summary", "detail": "Engineering Manager · revision and evidence" }
+        { "id": "preview-server", "label": "Preview server", "detail": "Explicit static assets only" },
+        { "id": "source-version", "label": "Source metadata", "detail": "Branch, commit, and dirty state" }
       ]
     }
   ],
   "flows": [
-    { "from": "contract", "to": "implementation", "label": "agreed behavior" },
-    { "from": "implementation", "to": "verification", "label": "exact revision" },
-    { "from": "verification", "to": "outcome", "label": "review evidence" }
+    { "from": "presentation", "to": "domain", "label": "raw guest lines" },
+    { "from": "domain", "to": "presentation", "label": "normalized guests" },
+    { "from": "delivery", "to": "presentation", "label": "assets + source revision" }
   ]
 }
 ```

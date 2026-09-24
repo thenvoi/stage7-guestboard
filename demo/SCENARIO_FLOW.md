@@ -57,20 +57,20 @@ These are team obligations and delegation points:
 
 | Shared task | Initial owner | Diagram component | Completion evidence |
 |---|---|---|---|
-| Confirm import behavior | Product Manager | `acceptance-contract` | contract posted in the room |
-| Repair normalization order | Claude Developer | `normalizer` | exact commit plus fast Node result |
-| Review core behavior | QA Engineer | `core-regression` | exact revision and Developer's unit evidence |
-| Verify visible cards and count | QA Engineer; UI/UX may observe | `browser-proof` | presenter's manual import shows two handles/count two |
-| Challenge the reviewed revision in Docker | Adversarial Reviewer | `docker-proof` | source identity plus Docker result |
-| Summarize delivery evidence | Engineering Manager | `delivery-summary` | revision, checks, and limitations |
+| Confirm import behavior | Product Manager | `guest-board` | contract posted in the room |
+| Repair normalization order | Claude Developer | `guest-normalizer` | exact commit plus fast Node result |
+| Review core behavior | QA Engineer | `guest-normalizer` | exact revision and Developer's unit evidence |
+| Verify visible cards and count | QA Engineer; UI/UX may observe | `guest-board` | presenter's manual import shows two handles/count two |
+| Challenge the reviewed revision in Docker | Adversarial Reviewer | `guest-normalizer` | source identity plus Docker result |
+| Summarize delivery evidence | Engineering Manager | none | revision, checks, and limitations |
 
 The Manager creates the cards in the listed order so their numeric IDs stay predictable
 in a rehearsal: create the first card, let Product Manager complete it, then create the
 remaining five. The live IDs remain authoritative; never invent one. For example:
 
 ```sh
-jam work assign <chat-id> "Confirm import behavior" --component acceptance-contract
-jam work assign <chat-id> "Repair normalization order" --component normalizer
+jam work assign <chat-id> "Confirm import behavior" --component guest-board
+jam work assign <chat-id> "Repair normalization order" --component guest-normalizer
 ```
 
 Each agent separately creates its own native/private task list and links the applicable
@@ -169,7 +169,7 @@ section.
 Presenter focus: two agents can collaborate, but following both terminals, their
 separate histories, and the room traffic is already cumbersome.
 
-**Visible state:** the plan exists; `acceptance-contract` is active; the room contains
+**Visible state:** the plan exists; `guest-board` is active; the room contains
 a concise Architect → Developer handoff and the Developer's acknowledgement.
 
 **Transition owner:** Architect. In `hitl` mode, ask whether to move from the terminal
@@ -189,11 +189,11 @@ The Manager first creates and delegates the contract card. After Product Manager
 confirms it, the Manager creates the remaining five shared tasks from the Task model
 and links them to diagram nodes:
 
-- repair normalizer → `normalizer`
-- review core behavior → `core-regression`
-- verify visible cards and count → `browser-proof`
-- verify exact revision in Docker → `docker-proof`
-- summarize evidence → `delivery-summary`
+- repair normalizer → `guest-normalizer`
+- review core behavior → `guest-normalizer`
+- verify visible cards and count → `guest-board`
+- verify exact revision in Docker → `guest-normalizer`
+- summarize evidence → no component; it is delivery bookkeeping
 
 **Visible state:** participants, shared tasks, plan, and architecture map are visible
 from one surface.
@@ -207,8 +207,8 @@ good enough for the Manager to dispatch parallel work.
 
 The Manager assigns implementation to Claude Developer and independent reproduction
 to QA. QA must not edit implementation. The Adversarial Reviewer remains outside the
-critical path until a reviewed revision exists. Mark `normalizer` and
-`core-regression` active so the diagram reflects current work.
+critical path until a reviewed revision exists. Mark `guest-normalizer` active so the
+diagram reflects where implementation and core review are happening.
 
 Presenter focus: assignments and progress are durable team state, while each coding
 agent keeps its own context and task lane.
@@ -226,8 +226,9 @@ prepared one-line normalization-order repair, runs only
 the exact commit and actual result. Do not inspect tags/history, create another
 worktree, run `npm`/`npx`, start a server, or claim browser verification.
 
-**Visible state:** `normalizer` moves to done; `source-revision` becomes active; the
-implementation task shows the Developer as owner.
+**Visible state:** `guest-normalizer` remains active through implementation and core
+review; the implementation task shows the Developer as owner and contains the exact
+source revision.
 
 **Transition owner:** Claude Developer. In `hitl` mode, ask whether to hand this exact
 revision to QA for independent review.
@@ -246,8 +247,9 @@ When the full cast is enabled, UI/UX briefly confirms that the visible result ma
 the contract and that the status/count communicate the outcome. This is an observation,
 not a second implementation review, and it must not delay QA.
 
-**Visible state:** `core-regression` and `browser-proof` move to done. The QA report
-names the exact revision and actual checks.
+**Visible state:** `guest-normalizer` moves to done after core review and `guest-board`
+moves to done after the manual browser observation. The QA report names the exact
+revision and distinguishes unit evidence from the manual check.
 
 **Transition owner:** QA Engineer. In `hitl` mode, ask whether to send the reviewed
 revision to the Adversarial Reviewer for the Docker-backed challenge.
@@ -263,8 +265,8 @@ Challenge unsupported claims: a local receipt is not remote execution, and a cor
 is not browser proof. Do not clone, fetch, create a worktree, install dependencies, run
 `npm`/`npx`, or edit the implementation.
 
-**Visible state:** the desktop shows the reviewer working in the sandbox; `docker-proof`
-moves from active to done only after real evidence exists.
+**Visible state:** the desktop shows the reviewer working in the sandbox; the Docker
+task associated with `guest-normalizer` completes only after real evidence exists.
 
 **Transition owner:** Adversarial Reviewer. In `hitl` mode, ask whether the evidence is
 sufficient for the Engineering Manager to close the loop. A blocking finding returns
@@ -275,8 +277,8 @@ to the responsible owner instead of forcing a positive ending.
 **Owner:** Engineering Manager.
 
 Summarize the product contract, exact source revision, baseline failure, local core and
-browser results, Docker verification, and any limitation. Mark `delivery-summary` done
-only when each claim has evidence. End on the desktop architecture map and Work board:
+browser results, Docker verification, and any limitation. Complete the shared summary
+task only when each claim has evidence. End on the desktop architecture map and Work board:
 the audience should see who did what, where the work ran, what changed, and what needed
 human judgment without reconstructing several terminal transcripts.
 
