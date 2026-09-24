@@ -72,7 +72,8 @@ short terminal handoff followed by desktop coordination with the Engineering Man
 Product Manager, QA Engineer, Adversarial Reviewer, and an optional UI/UX check.
 `demo/scenario-control.json` turns the flow on and selects presenter-gated or continuous
 pacing. The audience-safe plan and live Jam architecture map are in
-[demo/WORK_PLAN.md](demo/WORK_PLAN.md).
+[demo/WORK_PLAN.md](demo/WORK_PLAN.md). Start each conference run on a new `demo/`
+branch from `demo-scripted-baseline-v1`; that tag includes the scenario and unfixed bug.
 
 ## Scope
 

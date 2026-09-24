@@ -135,11 +135,16 @@ paths. Do not put a section gate on a generic ACP profile unless that exact prof
 passed a real question-bridge smoke test. Rebuild or reconfigure the QA identity before
 the talk if necessary; do not discover that incompatibility on stage.
 
-1. Create a fresh named `demo/` run branch from `demo-baseline-v1`. Never reuse a
-   repaired branch. Put each implementation/review owner in a separate disposable
-   workspace at the same baseline revision.
-2. Make this scenario pack available in those workspaces without moving the baseline
-   tag or merging a fix into `main`.
+1. Create a fresh named `demo/` run branch from `demo-scripted-baseline-v1`. This tag
+   contains the prepared scenario and the original bug, but no repair. Never reuse a
+   completed run branch:
+
+   ```sh
+   git switch --create demo/<run-name> demo-scripted-baseline-v1
+   ```
+
+2. Put each implementation/review owner in a prepared disposable workspace at that
+   exact starting revision. Do not point a stage agent at an earlier rehearsal branch.
 3. Install dependencies and Chromium before the session. Offstage, confirm `npm run check`
    passes, retain a real failing `npm run test:regression` result from the baseline, and
    preflight the repaired browser behavior. Do not ask a stage agent to repeat these.
