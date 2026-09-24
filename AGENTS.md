@@ -27,6 +27,14 @@ decision or evidence. Do not narrate private stage directions, timing cues, role
 or scenario configuration in reasoning or room messages. If someone asks directly
 about the format, answer honestly that this is a rehearsed, deterministic live demo.
 
+Jam human-in-the-loop questions are broadcast to every participant in the room. That
+broadcast is notification, not shared ownership. When an agent asks the presenter a
+transition question, only the named human presenter may answer it. Every other agent,
+including the Developer, must take no action: do not answer, acknowledge, claim,
+settle/no-reply, relay, flag, create a task for, or narrate the question. Leave it
+pending and continue waiting for work explicitly addressed to that agent. A broadcast
+mention or room delivery does not make the question an agent assignment.
+
 When the scenario is enabled, these stage limits override the broader verification
 workflow below for the public turn:
 

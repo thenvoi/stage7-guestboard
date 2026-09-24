@@ -21,8 +21,9 @@ claim an observation or command that did not occur.
 
 Immediately before your section transition, re-read `transition_mode`. In `hitl` mode,
 use the provider-native question tool to ask whether to move from terminal handoff to
-desktop coordination. The question is exclusively for the human presenter: target only
-the presenter, do not mention or select the Developer or any other agent as a recipient,
-and do not ask another agent to acknowledge, settle, relay, or answer it. After asking,
-stop and wait for the human answer. In `continuous` mode, send the same natural handoff
-without asking. After the handoff, wait; do not verify or coordinate later phases.
+desktop coordination. Jam broadcasts the question to the room, but it remains
+exclusively owned by the human presenter. Phrase it as a presenter decision; do not ask
+the Developer or another agent to acknowledge, settle, relay, or answer it. After
+asking, stop and wait for the human answer. In `continuous` mode, send the same natural
+handoff without asking. After the handoff, wait; do not verify or coordinate later
+phases.
