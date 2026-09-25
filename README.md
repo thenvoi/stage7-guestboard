@@ -22,7 +22,9 @@ When serving inside a disposable sandbox, use its supported preview-port forward
 
 Import `Ada`, ` ada `, and `Lin`, one per line. The baseline shows three guest cards, including duplicate `ada` cards, and a count of three. The intended result is two cards and a count of two.
 
-Fix the implementation while preserving blank-line handling and first-seen order. Obtain independent review and verify the same source version on a remote runtime. The browser and tests use the same `guest-list.mjs` implementation.
+Fix the implementation while preserving blank-line handling and first-seen order.
+Obtain independent QA review of the exact committed revision and verify its visible
+browser result. The browser and tests use the same `guest-list.mjs` implementation.
 
 The prepared app and known defect are disclosed. Do not claim that the baseline is bug-free or that test output is a real Jam/provider rehearsal. A passing unit test is not browser or multi-agent acceptance.
 
@@ -59,7 +61,9 @@ Choose a new name for every rehearsal or performance. Never reset or force-push 
 
 Agents can use separate clones of the same run branch. Give implementation and regression changes explicit owners; fetch/review the exact commit before continuing. If parallel work needs separate role branches, name them `demo/<run>/builder` and `demo/<run>/reviewer`. Integrate reviewed commits only into that run's branch, never the baseline. Do not assume Band room membership shares a filesystem.
 
-The footer displays the served checkout's branch, commit, and whether it has working changes. Record an exact committed revision for remote verification. A dirty checkout is not an immutable handoff.
+The footer displays the served checkout's branch, commit, and whether it has working
+changes. Record an exact committed revision for QA and browser evidence. A dirty
+checkout is not an immutable handoff.
 
 ## Attach roles
 
@@ -73,13 +77,13 @@ See [the operator guide](docs/operator-guide.md) for the task, source handoff, p
 
 The presenter runbook is [demo/SCENARIO_FLOW.md](demo/SCENARIO_FLOW.md). It stages a
 short terminal handoff followed by desktop coordination with the Engineering Manager,
-Product Manager, QA Engineer, Adversarial Reviewer, and an optional UI/UX check.
+Product Manager, and QA Engineer.
 `demo/scenario-control.json` turns the flow on and selects presenter-gated or continuous
 pacing. Non-owning agents quietly settle their own copies of broadcast presenter
 questions without answering them, preventing pull-receiver inbox fencing. The
 audience-safe plan and live Jam architecture map are in
 [demo/WORK_PLAN.md](demo/WORK_PLAN.md). Start each conference run with
-`demo/prepare-iteration.sh`; its default `demo-scripted-baseline-v6` tag includes the
+`demo/prepare-iteration.sh`; its default `demo-scripted-baseline-v7` tag includes the
 scenario, presenter-owned HITL rules, preparation command, and unfixed bug.
 
 ## Scope

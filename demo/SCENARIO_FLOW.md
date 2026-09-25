@@ -1,43 +1,43 @@
 # Stage 7 conference scenario
 
-This is the operator runbook for a 10–15 minute collaboration demo inside the
-25-minute session. It deliberately removes codebase exploration and open-ended design
-time. The collaboration events, HITL questions, source handoffs, tests, and browser
-observations remain real, but the public run permits only one fast Node check and one
-manual browser observation. Full automation belongs to preflight.
+This is the operator runbook for an 8–10 minute collaboration demo inside the
+25-minute session. It removes codebase exploration and open-ended design time. The
+collaboration events, source handoffs, fast test, QA review, and browser observation
+remain real. Full automation belongs to preflight.
 
 Do not attach this runbook to the room. Attach `demo/WORK_PLAN.md`; it contains the
-audience-safe plan and structured `arch` diagram.
+audience-safe delivery plan and structured software-architecture diagram.
 
 ## Controls
 
 Edit `demo/scenario-control.json` before starting any agents.
 
-- `enabled: true` makes agents follow this flow. `false` returns them to the ordinary
-  repository instructions.
-- `transition_mode: "hitl"` makes the owner of every section ask one provider-native
-  question before handing off. Use this on stage.
-- `transition_mode: "continuous"` skips transition questions and runs the same flow
-  end to end. Use this for timing rehearsals.
-- `cast: "full"` includes the short UI/UX visual check. `"core"` omits it.
-- `execution_mode: "bounded-live"` forbids exploration outside the assigned step.
-- `live_check: "node-regression-only"` permits only the fast Node regression for the
-  Developer and Docker verifier.
-- `browser_check: "presenter-manual"` forbids agent-started Playwright during the talk.
+- `enabled: true` activates this conference flow.
+- `transition_mode: "hitl"` enables the three purposeful presenter decisions. Use it
+  on stage. `"continuous"` skips the first two gates for timing rehearsals; QA still
+  needs an actual browser observation.
+- `cast: "core"` is the supported stage cast: Architect, Developer, Engineering
+  Manager, Product Manager, and QA Engineer.
+- `execution_mode: "bounded-live"` keeps every role on its assigned contribution.
+- `live_check: "node-regression-only"` permits the Developer's fast Node regression.
+- `browser_check: "presenter-manual"` reserves the visible preview check for the
+  presenter.
 - `allow_worktrees` and `allow_browser_automation` must remain `false`.
 - `evidence_policy` must remain `"observed-only"`.
 
-Agents re-read the control file immediately before a transition. A HITL transition
-must use the provider's native question tool so Jam projects it into Chat and the
-Work board. A normal chat question is not a substitute. Ask naturally, with a continue
-choice and a pause/discuss choice; do not recite fixed dialogue.
+The three presenter decisions are:
 
-Jam also delivers the room-wide question notification to non-owning agents. Those
-agents must never answer it, but they must quietly settle their own delivery copy with
-the transport's no-reply action (`ack` for a lease-backed CLI delivery or
-`jam_no_reply` for MCP). This is delivery bookkeeping, not participation in the
-decision, and prevents the notification from fencing later inbox work. The asking
-agent waits for the named human presenter's answer.
+1. Architect: move from the two terminals to desktop coordination.
+2. Product Manager: approve the user-visible contract.
+3. QA: record what the presenter actually sees in the browser.
+
+Routine assignment, implementation, review handoff, and closeout do not need human
+approval. They proceed through addressed room messages.
+
+A native HITL question is broadcast to all participants. Only the named presenter may
+answer it. Every other agent quietly settles only its delivery copy with `ack` for CLI
+lease delivery or `jam_no_reply` for MCP delivery. That bookkeeping neither answers
+nor resumes the question and prevents an unrelated question from fencing later work.
 
 ## Plan and diagram ownership
 
@@ -47,269 +47,158 @@ Copilot Architect publishes the shared plan during Section 1:
 jam plan set <chat-id> demo/WORK_PLAN.md --snapshot
 ```
 
-The structured `arch` block inside that Markdown file is the room's architecture map;
-there is no second diagram attachment. The Architect owns the initial publish. Product
-Manager confirms its acceptance contract. Engineering Manager owns later focus/status
-updates as the work moves between nodes. No other role replaces the plan during the run.
-
-The Markdown is prepared to keep the stage run bounded, but the attachment and its Jam
-activity are real. If the attach fails, report the failure; do not pretend the diagram
-was published.
+The structured `arch` block is the Guestboard software architecture: browser UI,
+shared guest-list logic, and static preview delivery. It is not a process diagram.
+The Architect owns the initial publication. Product Manager confirms its acceptance
+contract. Engineering Manager owns later component focus and status updates.
 
 ## Task model
 
-Engineering Manager starts the shared room board with the contract card, delegates it
-to Product Manager, then creates the remaining cards after the contract is confirmed.
-These are team obligations and delegation points:
+Engineering Manager creates the contract card first and delegates it to Product
+Manager. After the contract is approved, the Manager creates the remaining four cards
+in order:
 
 | Shared task | Initial owner | Diagram component | Completion evidence |
 |---|---|---|---|
-| Confirm import behavior | Product Manager | `guest-board` | contract posted in the room |
-| Repair normalization order | Claude Developer | `guest-normalizer` | exact commit plus fast Node result |
-| Review core behavior | QA Engineer | `guest-normalizer` | exact revision and Developer's unit evidence |
-| Verify visible cards and count | QA Engineer; UI/UX may observe | `guest-board` | presenter's manual import shows two handles/count two |
-| Challenge the reviewed revision in Docker | Adversarial Reviewer | `guest-normalizer` | source identity plus Docker result |
-| Summarize delivery evidence | Engineering Manager | none | revision, checks, and limitations |
+| Confirm import behavior | Product Manager | `guest-board` | contract posted in room |
+| Repair normalization order | Claude Developer | `guest-normalizer` | exact commit and fast Node result |
+| Review core behavior | QA Engineer | `guest-normalizer` | QA verdict on exact revision |
+| Verify visible cards and count | QA Engineer | `guest-board` | presenter's manual observation |
+| Summarize delivery evidence | Engineering Manager | none | revision, evidence, limitations |
 
-The Manager creates the cards in the listed order so their numeric IDs stay predictable
-in a rehearsal: create the first card, let Product Manager complete it, then create the
-remaining five. The live IDs remain authoritative; never invent one. For example:
-
-```sh
-jam work assign <chat-id> "Confirm import behavior" --component guest-board
-jam work assign <chat-id> "Repair normalization order" --component guest-normalizer
-```
-
-Each agent separately creates its own native/private task list and links the applicable
-item to the assigned shared card. Private tasks are execution detail, not duplicate
-delegation:
+Live board IDs are authoritative. Each role separately creates its native/private
+tasks and links the applicable one to its assigned shared card.
 
 | Agent | Private/native tasks |
 |---|---|
-| Copilot Architect | publish plan/diagram; delegate bounded repair; request desktop handoff |
-| Claude Developer | read target and regression; apply one-line repair; run fast Node check; commit and hand off revision |
+| Copilot Architect | publish plan/diagram; delegate bounded repair; request desktop coordination |
+| Claude Developer | inspect target/regression; apply repair; run fast check; commit and hand off |
 | Engineering Manager | `Coordinate team and shared board`; `Track implementation and review gates`; `Publish final evidence summary` |
 | Product Manager | confirm import semantics and visible outcome |
-| QA Engineer | review exact candidate/unit evidence; guide manual browser cards/count check |
-| Adversarial Reviewer | confirm Docker source identity; challenge candidate and issue verdict |
-| UI UX Designer | inspect visible outcome, when the full cast is enabled |
+| QA Engineer | review exact candidate/unit evidence; record manual browser cards/count |
 
-Use the provider's native task tool when available. After accepting a shared card, link
-one native task to it with Jam's returned board ID (`work take ... --link-native ...`
-or the supported `[#id]` marker). An agent completes only its own private task; the
-linked shared card then reflects that progress. Manager does not impersonate another
-agent's private lane.
+The Manager must visibly maintain its three tasks: complete the first after both
+desktop roles and all five shared cards are in place, complete the second after QA's
+verdict and browser observation, and complete the third after publishing closeout.
 
-## Agent message sequence
+## Message sequence
 
-These are content contracts, not lines to recite. Agents phrase them naturally and
-replace every evidence field with the observed value.
+These are content contracts, not canned lines. Every result uses observed values.
 
 | Trigger | Sender → recipient | Required content |
 |---|---|---|
-| terminal intake | Architect → Developer | symptom, sample input, expected cards/count, preservation rules, bounded repair request |
-| Developer accepts | Developer → Architect | shared-card acceptance and intent to perform the one-line repair/fast Node check |
-| first HITL continue | Architect → Engineering Manager | agreed contract, plan/diagram attachment status, and active Developer handoff |
-| Manager opens desktop team | Manager → Product Manager | ask for a concise confirmation of the user-visible contract |
-| contract confirmed | Product Manager → Manager and QA | canonicalization, blank-line, order, and visible-result requirements |
-| board created | Manager → Developer | shared implementation card ID, component, exact scope, request for committed source handoff |
-| board created | Manager → QA | shared review card IDs, independence rule, and manual-browser expectation |
-| QA review starts | QA → Developer | exact evidence needed with the candidate and preservation edge cases |
-| candidate ready | Developer → QA | exact commit, commands actually run, results, and explicit statement that browser review remains QA-owned |
-| local review complete | QA → Adversarial Reviewer | exact reviewed commit, reported unit evidence, manual browser observation, requested Docker challenge |
-| Docker check complete | Adversarial Reviewer → Manager | source identity, command/result, objection or ready verdict, and any limitation |
-| closeout | Manager → room | contract, exact revision, baseline-to-candidate evidence chain, runtime locations, blockers/limitations |
+| terminal intake | Architect → Developer | symptom, sample, expected cards/count, preservation rules, ownership request |
+| Developer accepts | Developer → Architect | brief acceptance of behavior and ownership |
+| presenter switches surfaces | Architect → Engineering Manager | contract, plan/diagram status, active Developer handoff |
+| desktop opens | Manager → Product Manager | concise user-visible contract review |
+| contract approved | Product Manager → Manager and QA | normalization, blanks, order, visible result |
+| work dispatched | Manager → Developer | shared card ID, component, exact scope, committed handoff request |
+| work dispatched | Manager → QA | review card IDs, independence rule, browser observation expectation |
+| QA prepares review | QA → Developer | exact revision and evidence requested |
+| candidate ready | Developer → QA | exact commit, actual fast command/result, browser review still outstanding |
+| presenter observes preview | QA → Manager | exact revision, Developer evidence, QA verdict, presenter observation, limitation |
+| closeout | Manager → room | contract, revision, evidence chain, ownership, limitations |
 
-Every addressed request names one recipient who can act. Avoid generic status chatter,
-stage tokens, and claims such as “tests pass” without the command and revision context.
+Every actionable request names one recipient. Avoid generic chatter and unsupported
+claims such as “tests pass” without the command and revision context.
 
 ## Before the audience arrives
 
-Prepare these identities in Jam before the run:
+Prepare these identities:
 
 | Role | Surface/runtime | Purpose |
 |---|---|---|
-| Copilot Architect | attached Copilot terminal | initial framing and first HITL gate |
-| Claude Developer | attached Claude terminal | bounded implementation and exact revision handoff |
+| Copilot Architect | attached Copilot terminal | framing, plan, first presenter gate |
+| Claude Developer | attached Claude terminal | bounded implementation and revision handoff |
 | Engineering Manager | Jam-hosted Codex | desktop coordination and closeout |
-| Product Manager | Jam-hosted Codex | user-visible acceptance contract |
-| QA Engineer | Jam-hosted runtime with a verified question bridge | independent core and browser review |
-| Adversarial Reviewer | Jam-hosted Codex in Docker | exact-revision challenge |
-| UI UX Designer | Jam-hosted Claude, optional | short visible-result observation |
+| Product Manager | Jam-hosted Codex | acceptance contract |
+| QA Engineer | Jam-hosted runtime | independent review and browser observation gate |
 
-The current Jam question broker supports owned Codex, Claude Code, and Copilot question
-paths. Do not put a section gate on a generic ACP profile unless that exact profile has
-passed a real question-bridge smoke test. Rebuild or reconfigure the QA identity before
-the talk if necessary; do not discover that incompatibility on stage.
-
-1. Prepare a fresh named `demo/` run branch with the repository preflight. Its default
-   `demo-scripted-baseline-v6` contains the prepared scenario, presenter-owned HITL
-   rules, and original bug, but no repair. Never reuse a completed run branch:
-
-   ```sh
-   ./demo/prepare-iteration.sh demo/<run-name>
-   ```
-
-2. Put each implementation/review owner in a prepared disposable workspace at that
-   exact starting revision. Do not point a stage agent at an earlier rehearsal branch.
-3. Install dependencies and Chromium before the session. Offstage, confirm `npm run check`
-   passes, retain a real failing `npm run test:regression` result from the baseline, and
-   preflight the repaired browser behavior. Do not ask a stage agent to repeat these.
-4. Start Copilot Architect and Claude Developer in two terminal windows, attached to
-   the same fresh engineering room. Do not reuse a rehearsal room with old messages,
-   tasks, plans, or resolved HITL requests. Prepare the managed desktop agents but do
-   not add the full cast to the room yet. In **Add participants → Coding sessions**,
-   search for Product Manager, QA Engineer, Adversarial Reviewer, and the optional UI
-   UX Designer; every intended role must resolve as an available peer before Section 1.
-   Start or repair a missing identity now rather than discovering it at the Section 5
-   handoff. Smoke-test one native HITL request for every transition owner in a private
-   preparation room, then clear those requests before the talk.
-5. Set the room activity feed to the intended public level. Inspect the visible feed
-   for secrets, machine paths, and unrelated context.
-6. In a private rehearsal room, verify that `demo/WORK_PLAN.md` renders both plan and
-   diagram. Clear the rehearsal room. During the public run the Architect performs the
-   real attachment in Section 1.
-7. Keep a prerecorded fallback clip available and label it honestly if used.
+1. Run `./demo/prepare-iteration.sh demo/<run-name>` from
+   `demo-scripted-baseline-v7`. Never reuse a repaired branch.
+2. Put the Architect and Developer on that exact starting revision. Prepare runtime
+   access and dependencies before the session.
+3. Offstage, confirm baseline checks pass, retain the expected failing regression, and
+   preflight the repaired browser behavior.
+4. Start Architect and Developer in two terminals in the same fresh room. Confirm the
+   Engineering Manager, Product Manager, and QA Engineer are discoverable before the
+   public run. Do not reuse a room with old messages, tasks, plans, or HITL requests.
+5. Open the preview on the exact run branch. Confirm the footer source identity and
+   clear synthetic browser data.
+6. Check that `demo/WORK_PLAN.md` renders its plan and software architecture map.
+7. Keep a clearly labelled prerecorded fallback available.
 
 ## Section 1 — two terminals, two isolated contexts (about 2 minutes)
 
 **Owners:** Copilot Architect and Claude Developer.
 
-The Architect uses the prepared goal and contract, creates exactly three private tasks,
-publishes the plan/diagram, and sends the Developer the bounded repair request through
-the Jam room. The public request states only the defect, acceptance behavior, and
-ownership. The Developer replies with a brief, natural acknowledgement of the behavior
-and ownership. Privately, both agents stop after that handoff until the desktop phase;
-they never narrate that gate or enumerate files, commands, tests, edits, or other actions
-they are not taking.
+The Architect publishes the plan and software architecture map, then sends the bounded
+guest-identity contract to the Developer. The Developer gives a brief acknowledgement
+of the behavior and ownership. Public messages describe the engineering work, not the
+private run controls.
 
-Presenter focus: two agents can collaborate, but following both terminals, their
-separate histories, and the room traffic is already cumbersome.
+**Visible state:** plan and architecture map published; concise Architect → Developer
+handoff; Developer ownership acknowledgement.
 
-**Visible state:** the plan exists; `guest-board` is active; the room contains
-a concise Architect → Developer handoff and the Developer's acknowledgement.
-
-**Transition owner:** Architect. In `hitl` mode, ask whether to move from the terminal
-handoff to shared desktop coordination. On continue, send a concise handoff to the
-Engineering Manager. On pause, wait without starting the next section.
+**Presenter gate:** Architect asks whether to move to desktop coordination. On continue,
+the Architect adds and briefs the Engineering Manager. On pause, wait.
 
 ## Section 2 — desktop makes the contract shared (about 2 minutes)
 
 **Owners:** Engineering Manager and Product Manager.
 
-Switch to the Jam desktop. The Manager joins the existing room, reads the terminal
-handoff, and brings in the Product Manager and QA Engineer. The Product Manager checks
-the synthetic import contract: canonicalize case and surrounding spaces, ignore blank
-lines, preserve first-seen order, and display two cards/count two for the sample.
+The Manager enters the existing room and immediately creates its three private tasks,
+starting `Coordinate team and shared board`. It brings in Product Manager and QA, then
+creates the contract card. Product Manager confirms: compare trimmed lowercase handles,
+ignore blanks, preserve first-seen distinct order, and show two handles/count two for
+the sample.
 
-Before recruiting the cast or creating shared cards, the Manager creates its three
-private tasks with the exact names in the Task model and starts `Coordinate team and
-shared board`. The Manager keeps those tasks visible and updates them as coordination,
-review tracking, and closeout actually progress.
+**Presenter gate:** Product Manager asks whether the contract is sufficient to dispatch
+work. On approval, it sends the contract to Manager and QA.
 
-The Manager first creates and delegates the contract card. After Product Manager
-confirms it, the Manager creates the remaining five shared tasks from the Task model
-and links them to diagram nodes:
+The Manager then creates the other four shared cards, completes its first private task,
+starts `Track implementation and review gates`, and directly dispatches Developer and
+QA. There is no additional Manager question.
 
-- repair normalizer → `guest-normalizer`
-- review core behavior → `guest-normalizer`
-- verify visible cards and count → `guest-board`
-- verify exact revision in Docker → `guest-normalizer`
-- summarize evidence → no component; it is delivery bookkeeping
+## Section 3 — implementation and independent review (about 3 minutes)
 
-**Visible state:** participants, shared tasks, plan, and architecture map are visible
-from one surface.
+**Owners:** Claude Developer and QA Engineer, coordinated by Engineering Manager.
 
-**Transition owner:** Product Manager. In `hitl` mode, ask whether this contract is
-good enough for the Manager to dispatch parallel work.
+Developer makes the prepared normalization-order repair, runs
+`node --test tests/regression.test.mjs`, commits the result, and sends QA the exact
+commit and observed output. This handoff is direct; it does not ask the presenter for
+permission.
 
-## Section 3 — split ownership and begin parallel work (about 2 minutes)
+QA reviews the exact revision and Developer evidence without editing implementation.
+QA separates the Developer's unit evidence from browser evidence and prepares the one
+manual observation request.
 
-**Owner:** Engineering Manager.
+**Visible state:** the shared normalizer card moves through Developer ownership and QA
+review with one exact revision attached.
 
-The Manager assigns implementation to Claude Developer and independent reproduction
-to QA. QA must not edit implementation. The Adversarial Reviewer remains outside the
-critical path until a reviewed revision exists. Mark `guest-normalizer` active so the
-diagram reflects where implementation and core review are happening.
+## Section 4 — human browser evidence and closeout (about 2 minutes)
 
-Presenter focus: assignments and progress are durable team state, while each coding
-agent keeps its own context and task lane.
+**Owners:** QA Engineer and Engineering Manager.
 
-**Transition owner:** Engineering Manager. In `hitl` mode, ask whether to start the
-Developer and QA lanes. On continue, address both owners in the room.
+The presenter imports the configured three lines in the already-open preview. If that
+observation has not already been supplied for the exact candidate, QA uses one native
+question with factual choices such as `Two cards; count two`, `Three cards; count
+three`, or `Preview unavailable`.
 
-## Section 4 — one small repair, one exact handoff (about 2 minutes)
+After the presenter answers, QA sends Manager one verdict containing the exact revision,
+Developer-reported command/result, QA review, presenter-reported browser result, and
+any limitation. QA does not recruit another reviewer.
 
-**Owner:** Claude Developer.
-
-The Developer reads only `guest-list.mjs` and `tests/regression.test.mjs`, makes the
-prepared one-line normalization-order repair, runs only
-`node --test tests/regression.test.mjs`, and commits it on the named demo branch. Share
-the exact commit and actual result. Do not inspect tags/history, create another
-worktree, run `npm`/`npx`, start a server, or claim browser verification.
-
-**Visible state:** `guest-normalizer` remains active through implementation and core
-review; the implementation task shows the Developer as owner and contains the exact
-source revision.
-
-**Transition owner:** Claude Developer. In `hitl` mode, ask whether to hand this exact
-revision to QA for independent review.
-
-## Section 5 — independent browser review (about 3 minutes)
-
-**Owners:** QA Engineer, with optional UI UX Designer when `cast` is `full`.
-
-QA reviews the Developer's exact revision and reported fast-unit evidence without
-running repository commands. The presenter uses the already-open preview to import the
-configured sample while QA guides the expected observation: two visible handles and a
-count of two. Report the Developer's unit evidence and the presenter's manual browser
-observation separately. No agent starts Playwright or runs acceptance during the talk.
-
-When the full cast is enabled, UI/UX briefly confirms that the visible result matches
-the contract and that the status/count communicate the outcome. This is an observation,
-not a second implementation review, and it must not delay QA.
-
-**Visible state:** `guest-normalizer` moves to done after core review and `guest-board`
-moves to done after the manual browser observation. The QA report names the exact
-revision and distinguishes unit evidence from the manual check.
-
-**Transition owner:** QA Engineer. In `hitl` mode, ask whether to send the reviewed
-revision to the Adversarial Reviewer for the Docker-backed challenge.
-
-## Section 6 — adversarial Docker verification (about 2 minutes)
-
-**Owner:** Adversarial Reviewer.
-
-Join only after QA provides an exact reviewed revision. In the already-provisioned
-Docker workspace, confirm source identity and run only
-`node --test tests/regression.test.mjs` against that revision.
-Challenge unsupported claims: a local receipt is not remote execution, and a core test
-is not browser proof. Do not clone, fetch, create a worktree, install dependencies, run
-`npm`/`npx`, or edit the implementation.
-
-**Visible state:** the desktop shows the reviewer working in the sandbox; the Docker
-task associated with `guest-normalizer` completes only after real evidence exists.
-
-**Transition owner:** Adversarial Reviewer. In `hitl` mode, ask whether the evidence is
-sufficient for the Engineering Manager to close the loop. A blocking finding returns
-to the responsible owner instead of forcing a positive ending.
-
-## Close — one shared picture (about 1 minute)
-
-**Owner:** Engineering Manager.
-
-Summarize the product contract, exact source revision, baseline failure, local core and
-browser results, Docker verification, and any limitation. Complete the shared summary
-task only when each claim has evidence. End on the desktop architecture map and Work board:
-the audience should see who did what, where the work ran, what changed, and what needed
-human judgment without reconstructing several terminal transcripts.
+Manager completes `Track implementation and review gates`, starts and completes
+`Publish final evidence summary` around the room closeout, and summarizes the product
+contract, exact source revision, Developer unit evidence, QA verdict, presenter browser
+observation, and limitations. End on the Work board and software architecture map.
 
 ## Recovery cuts
 
-- If a provider is slow, switch `cast` to `core`; do not invent its response.
-- If a HITL question fails to surface, state the real bridge problem and continue from
-  the room only after the presenter makes that intervention visible.
-- If implementation is not ready by Section 5, use the last reviewed rehearsal commit
-  only as a clearly labeled fallback; do not present it as the live agent's output.
-- If browser or Docker verification fails, end with the blocker. A truthful red result
-  still demonstrates coordination.
+- If a HITL question fails to surface, state the bridge problem and make the presenter
+  intervention visible before continuing.
+- If implementation is late, use the last reviewed rehearsal commit only as a clearly
+  labelled fallback.
+- If the browser observation fails or is unavailable, end with that blocker. A truthful
+  red result still demonstrates coordination.

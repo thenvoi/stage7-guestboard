@@ -8,7 +8,7 @@ Usage:
 
 Examples:
   ./demo/prepare-iteration.sh demo/stage7-run-02
-  ./demo/prepare-iteration.sh demo/2026-09-25-rehearsal-01 demo-scripted-baseline-v6
+  ./demo/prepare-iteration.sh demo/2026-09-25-rehearsal-01 demo-scripted-baseline-v7
 
 The command is intentionally non-destructive:
   - it refuses dirty workspaces, existing branches, and extra worktrees;
@@ -26,7 +26,7 @@ die() {
 }
 
 run_branch="${1:-}"
-baseline_ref="${2:-${DEMO_BASELINE_REF:-demo-scripted-baseline-v6}}"
+baseline_ref="${2:-${DEMO_BASELINE_REF:-demo-scripted-baseline-v7}}"
 
 if [[ -z "$run_branch" || "$run_branch" == "-h" || "$run_branch" == "--help" ]]; then
   usage
@@ -79,9 +79,10 @@ import { parseGuestInput } from './guest-list.mjs';
 
 const control = JSON.parse(fs.readFileSync('demo/scenario-control.json', 'utf8'));
 const required = {
-  schema_version: 5,
+  schema_version: 6,
   enabled: true,
   transition_mode: 'hitl',
+  cast: 'core',
   execution_mode: 'bounded-live',
   live_check: 'node-regression-only',
   browser_check: 'presenter-manual',
@@ -149,9 +150,9 @@ Prepared repository iteration
 Next operator actions
   1. Create a fresh Jam room; do not reuse messages, tasks, plans, or HITL requests.
   2. Confirm Architect and Developer use this branch and revision.
-  3. In Add participants, confirm every desktop role is discoverable before starting,
-     especially the Adversarial Reviewer.
-  4. Pre-provision the reviewer's Docker workspace at this exact revision.
-  5. Push only if the remote verifier requires it:
+  3. In Add participants, confirm the Engineering Manager, Product Manager, and QA
+     Engineer are discoverable before starting.
+  4. Open the preview on this exact revision before the public run.
+  5. Push if another prepared workspace needs this exact branch:
        git push --set-upstream origin $branch
 EOF

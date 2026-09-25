@@ -3,7 +3,7 @@
 ## Prepare
 
 1. Run `./demo/prepare-iteration.sh demo/<run>`. It starts from
-   `demo-scripted-baseline-v3`, clears known ignored test artifacts, and proves the
+   `demo-scripted-baseline-v7`, clears known ignored test artifacts, and proves the
    expected bug-present state. Never reuse a repaired checkout as the next baseline.
 2. Give each agent a separate disposable clone/workspace and the exact baseline revision. Prepare repository access and dependencies before recording.
 3. Attach the common brief plus each actor's role, or use the runtime's supported per-session instruction path. Supply exact teammate handles privately.
@@ -15,7 +15,7 @@
 
 Use ordinary language, for example:
 
-> Importing the same guest with different capitalization or spaces creates duplicate cards and inflates the count. Please fix it, preserve first-seen order, and get an independent browser review. Once that passes, ask our remote verifier to check the same revision.
+> Importing the same guest with different capitalization or spaces creates duplicate cards and inflates the count. Please fix it, preserve first-seen order, and get an independent QA and browser review of the exact revision.
 
 Let agents recruit the permitted collaborators, discuss findings, request review, and update tasks themselves. Do not send stage tokens or hold tasks artificially for the camera. If a task finishes before you show its board, inspect its actual history.
 
@@ -23,9 +23,8 @@ Let agents recruit the permitted collaborators, discuss findings, request review
 
 1. Import `Ada`, ` ada `, and `Lin`, one per line. The baseline produces three cards and count three.
 2. Retain the original failing core and browser regression evidence.
-3. Have the independent reviewer inspect the exact repair commit and run `npm run acceptance`.
+3. Have QA inspect the exact repair commit and the Developer's observed fast-unit result.
 4. Serve that same revision, reset, and repeat the same import. It must show two cards and count two.
-5. Have the VM verifier fetch/check that revision independently. Its reply is useful; actual VM/process and test evidence establishes execution.
 
 Structured source IDs and test receipts belong in evidence. Chat should explain the result naturally with the relevant source reference.
 

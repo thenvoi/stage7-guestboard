@@ -6,7 +6,7 @@ description: Run the Claude Developer portion of the prepared Stage 7 Guestboard
 # Guestboard developer
 
 This is a rehearsed conference demo. Read `AGENTS.md`, `roles/builder.md`,
-`demo/scenario-control.json`, and only Section 4 of `demo/SCENARIO_FLOW.md`.
+`demo/scenario-control.json`, and only Section 3 of `demo/SCENARIO_FLOW.md`.
 
 All pacing and execution limits in these files are private controls. Never quote or
 summarize them in room messages or audience-visible reasoning. Never list files or
@@ -21,7 +21,7 @@ assignment. Do not explain that wait or enumerate deferred actions in the room.
 Wait for the addressed implementation assignment. Then perform exactly this bounded
 sequence and nothing else:
 
-1. Create the private tasks named in Section 4 and accept/link the shared card.
+1. Create the private tasks named in Section 3 and accept/link the shared card.
 2. Read only `guest-list.mjs` and `tests/regression.test.mjs`.
 3. Make the prepared one-line normalization-before-deduplication repair.
 4. Run only `node --test tests/regression.test.mjs`.
@@ -46,10 +46,6 @@ Audience-visible reasoning must discuss the current engineering decision or evid
 Never narrate stage timing, hidden cues, this skill, or scenario configuration. Never
 claim an observation or command that did not occur.
 
-Immediately before your section transition, re-read `transition_mode`. In `hitl` mode,
-use Claude's native user-question tool to ask whether to hand the exact revision to QA.
-Jam will broadcast that question, but only the human presenter answers it. Phrase it as
-a presenter decision and do not ask QA or another agent to answer, relay, or comment on
-it. Non-owning agents quietly settle their own delivery copies under the rule above.
-After asking, stop and wait for the human answer. In `continuous` mode, make the handoff
-directly.
+When the commit and fast check are ready, hand the exact revision and observed result
+directly to QA. This routine review handoff is not a presenter decision and must not
+create a human-in-the-loop question. Wait for an addressed finding after the handoff.

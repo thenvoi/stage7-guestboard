@@ -12,8 +12,7 @@ and distinct guests remain in first-seen order.
 2. Correct normalization in the shared core used by the browser and tests.
 3. Review one exact committed revision, its fast-unit evidence, and the presenter's
    manual browser observation.
-4. Run the same fast regression for that revision in the prepared Docker sandbox.
-5. Summarize the evidence and any remaining limitation.
+4. Summarize the evidence and any remaining limitation.
 
 ```arch
 {
@@ -60,5 +59,6 @@ and distinct guests remain in first-seen order.
 ## Evidence rule
 
 Every result shown in the room must identify whether it came from the Developer's fast
-unit command, the presenter's manual browser observation, or the Docker verifier. The
-plan is prepared; evidence is reported only after its bounded step occurs.
+unit command, QA's review of the exact revision, or the presenter's manual browser
+observation. The plan is prepared; evidence is reported only after its bounded step
+occurs.

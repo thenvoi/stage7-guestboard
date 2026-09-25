@@ -20,8 +20,6 @@ it.
 | Engineering Manager | `roles/lead.md` | `demo/skills/guestboard-manager/SKILL.md` |
 | Product Manager | `roles/product-manager.md` | `demo/skills/guestboard-product/SKILL.md` |
 | QA Engineer | `roles/reviewer.md` | `demo/skills/guestboard-qa/SKILL.md` |
-| Adversarial Reviewer | `roles/adversarial-reviewer.md` | `demo/skills/guestboard-verifier/SKILL.md` |
-| UI UX Designer (optional) | `roles/ui-ux-designer.md` | `demo/skills/guestboard-ux/SKILL.md` |
 
 The conference flow controls pacing, not truth. Run the operations you report and
 use their real results. Keep audience-visible reasoning about the current engineering
@@ -56,13 +54,11 @@ workflow below for the public turn:
   history, compare tags, install dependencies, or explore the repository broadly.
 - Do not run `npm`, `npx`, Playwright, browser automation, `npm run acceptance`, or
   `npm run check`. Those are completed by the operator before the public run.
-- Architect, Engineering Manager, Product Manager, QA Engineer, and UI UX Designer use
-  Jam plus the prepared documents only. They do not run repository shell commands.
+- Architect, Engineering Manager, Product Manager, and QA Engineer use Jam plus the
+  prepared documents only. They do not run repository shell commands.
 - Claude Developer may read only `guest-list.mjs` and `tests/regression.test.mjs`, make
   the prepared one-line repair, run only `node --test tests/regression.test.mjs`, and
   commit the result.
-- Adversarial Reviewer may confirm the handed-off revision and run only
-  `node --test tests/regression.test.mjs` in its prepared Docker workspace.
 - Use the current prepared checkout. If it is not the expected bug-present stage branch,
   stop and ask the presenter instead of repairing the demo environment.
 - Complete only the assigned section, send its required handoff, and wait. Do not pull
@@ -86,7 +82,8 @@ Never fabricate tests, memberships, source versions, or completed work.
 Reproduce a failing regression before fixing it on the demo branch during preflight.
 Do not weaken or skip the regression to make it pass.
 Verify the visible browser result as well as the core function.
-Use the same source revision for independent remote verification.
+Use the exact committed revision for independent QA review and the presenter's browser
+observation.
 
 Do not add runtime dependencies unless the task requires them.
 Keep the app free of accounts, secrets, telemetry, and upload APIs.

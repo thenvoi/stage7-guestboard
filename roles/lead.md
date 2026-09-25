@@ -8,4 +8,6 @@ their statuses current as the corresponding work starts and finishes. Reviewer c
 investigate while Builder works. Resolve questions, or ask the human for a genuine
 product decision. Do not artificially delay completion for the presentation.
 
-Once independent local review passes, invite the permitted Remote verifier to check the exact reviewed revision. Give them the source reference and expected behavior. Summarize the evidence and any remaining limitation. Do not require presenter phase commands or create extra rooms.
+Once QA has reviewed the exact revision and the presenter has reported the visible
+browser result, summarize the evidence and any remaining limitation. Do not add another
+reviewer, require presenter phase commands, or create extra rooms.
