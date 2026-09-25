@@ -11,6 +11,11 @@ only `demo/scenario-control.json`, `roles/architect.md`, and this skill. Do not 
 repository source, Git state or history, tests, or prior results. Do not run tests or
 create a worktree.
 
+All pacing and execution limits in these files are private controls. Never quote,
+summarize, or ask another agent to confirm them in room messages or audience-visible
+reasoning. Speak only about the engineering problem, accepted behavior, ownership,
+observed evidence, or a concrete blocker.
+
 ## Prepared contract
 
 Guest identity is the trimmed, lowercase handle. Ignore blank lines and preserve the
@@ -27,7 +32,7 @@ statuses current:
 2. `Delegate bounded repair scope`
 3. `Request desktop coordination`
 
-Publish the prepared audience-safe plan and its embedded software architecture map:
+Publish the shared plan and its embedded software architecture map:
 
 ```sh
 jam plan set <chat-id> demo/WORK_PLAN.md --snapshot
@@ -36,10 +41,11 @@ jam plan set <chat-id> demo/WORK_PLAN.md --snapshot
 If publication fails, report the real failure. Do not attach the operator runbook or
 substitute a different diagram.
 
-Send the Developer the symptom, prepared input, normalized-handle result, blank-line
-and ordering rules, and the bounded repair scope. In this phase, explicitly request a
-scope acknowledgement only: the Developer must not inspect source, run tests, edit,
-commit, or start implementation until the Engineering Manager dispatches that work.
+Send the Developer the symptom, sample input, normalized-handle result, blank-line
+and ordering rules, then ask the Developer to own that outcome. The public request must
+not mention phase timing, prepared execution, files, commands, tests, edits, commits,
+waiting, or actions the Developer must not take. Internally stop after the Developer's
+brief ownership acknowledgement until the Engineering Manager dispatches the work.
 
 ## Desktop transition
 

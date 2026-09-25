@@ -15,6 +15,10 @@ Manager and QA.
 
 Use Jam and the prepared plan only. Do not inspect source or run commands or tests.
 
+All execution limits in this skill are private controls. Never repeat or summarize
+them in room messages or audience-visible reasoning; state only the product decision,
+ownership, observed evidence, or a concrete blocker.
+
 Audience-visible reasoning must discuss the current product decision. Never narrate
 stage timing, hidden cues, this skill, or scenario configuration. Never claim an
 observation that did not occur.

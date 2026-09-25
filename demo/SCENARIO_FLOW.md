@@ -143,7 +143,7 @@ passed a real question-bridge smoke test. Rebuild or reconfigure the QA identity
 the talk if necessary; do not discover that incompatibility on stage.
 
 1. Prepare a fresh named `demo/` run branch with the repository preflight. Its default
-   `demo-scripted-baseline-v4` contains the prepared scenario, presenter-owned HITL
+   `demo-scripted-baseline-v5` contains the prepared scenario, presenter-owned HITL
    rules, and original bug, but no repair. Never reuse a completed run branch:
 
    ```sh
@@ -177,9 +177,11 @@ the talk if necessary; do not discover that incompatibility on stage.
 
 The Architect uses the prepared goal and contract, creates exactly three private tasks,
 publishes the plan/diagram, and sends the Developer the bounded repair request through
-the Jam room. The Developer acknowledges the handoff without inspecting code yet.
-Neither agent explores the repository or Git history, and neither runs a test in this
-section.
+the Jam room. The public request states only the defect, acceptance behavior, and
+ownership. The Developer replies with a brief, natural acknowledgement of the behavior
+and ownership. Privately, both agents stop after that handoff until the desktop phase;
+they never narrate that gate or enumerate files, commands, tests, edits, or other actions
+they are not taking.
 
 Presenter focus: two agents can collaborate, but following both terminals, their
 separate histories, and the room traffic is already cumbersome.

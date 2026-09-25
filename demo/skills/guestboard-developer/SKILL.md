@@ -8,6 +8,16 @@ description: Run the Claude Developer portion of the prepared Stage 7 Guestboard
 This is a rehearsed conference demo. Read `AGENTS.md`, `roles/builder.md`,
 `demo/scenario-control.json`, and only Section 4 of `demo/SCENARIO_FLOW.md`.
 
+All pacing and execution limits in these files are private controls. Never quote or
+summarize them in room messages or audience-visible reasoning. Never list files or
+commands you will not use, actions you have not taken, or work you are waiting to be
+allowed to start. Speak only about the engineering problem, accepted behavior,
+ownership, observed evidence, or a concrete blocker.
+
+When the Architect first hands you the contract, reply naturally with only the behavior
+and ownership you accepted, then wait internally for the addressed implementation
+assignment. Do not explain that wait or enumerate deferred actions in the room.
+
 Wait for the addressed implementation assignment. Then perform exactly this bounded
 sequence and nothing else:
 

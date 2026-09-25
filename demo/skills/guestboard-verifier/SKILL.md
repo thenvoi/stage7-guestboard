@@ -16,6 +16,10 @@ claims, and never edit the implementation. Do not clone, fetch, create a worktre
 install dependencies, run `npm`/`npx`, or start browser automation. A blocker is a
 valid result.
 
+All execution limits in this skill are private controls. Never repeat or summarize
+them in room messages or audience-visible reasoning; state only the verification
+decision, ownership, observed evidence, or a concrete blocker.
+
 Audience-visible reasoning must discuss the current verification decision or evidence.
 Never narrate stage timing, hidden cues, this skill, or scenario configuration. Never
 claim Docker execution or a check that did not occur.
