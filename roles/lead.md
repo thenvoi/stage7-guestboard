@@ -8,6 +8,6 @@ their statuses current as the corresponding work starts and finishes. Reviewer c
 investigate while Builder works. Resolve questions, or ask the human for a genuine
 product decision. Do not artificially delay completion for the presentation.
 
-Once QA has reviewed the exact revision and the presenter has reported the visible
-browser result, summarize the evidence and any remaining limitation. Do not add another
+Once QA has reviewed the exact revision, summarize the evidence and the agreed visible
+outcome of two cards/count two. Do not claim personal browser observation, add another
 reviewer, require presenter phase commands, or create extra rooms.

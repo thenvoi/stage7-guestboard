@@ -23,8 +23,9 @@ When serving inside a disposable sandbox, use its supported preview-port forward
 Import `Ada`, ` ada `, and `Lin`, one per line. The baseline shows three guest cards, including duplicate `ada` cards, and a count of three. The intended result is two cards and a count of two.
 
 Fix the implementation while preserving blank-line handling and first-seen order.
-Obtain independent QA review of the exact committed revision and verify its visible
-browser result. The browser and tests use the same `guest-list.mjs` implementation.
+Obtain independent QA review of the exact committed revision against the visible
+two-card/count-two contract. The browser and tests use the same `guest-list.mjs`
+implementation.
 
 The prepared app and known defect are disclosed. Do not claim that the baseline is bug-free or that test output is a real Jam/provider rehearsal. A passing unit test is not browser or multi-agent acceptance.
 
@@ -62,8 +63,8 @@ Choose a new name for every rehearsal or performance. Never reset or force-push 
 Agents can use separate clones of the same run branch. Give implementation and regression changes explicit owners; fetch/review the exact commit before continuing. If parallel work needs separate role branches, name them `demo/<run>/builder` and `demo/<run>/reviewer`. Integrate reviewed commits only into that run's branch, never the baseline. Do not assume Band room membership shares a filesystem.
 
 The footer displays the served checkout's branch, commit, and whether it has working
-changes. Record an exact committed revision for QA and browser evidence. A dirty
-checkout is not an immutable handoff.
+changes. Record an exact committed revision for QA evidence. A dirty checkout is not
+an immutable handoff.
 
 ## Attach roles
 
@@ -83,7 +84,7 @@ pacing. Non-owning agents quietly settle their own copies of broadcast presenter
 questions without answering them, preventing pull-receiver inbox fencing. The
 audience-safe plan and live Jam architecture map are in
 [demo/WORK_PLAN.md](demo/WORK_PLAN.md). Start each conference run with
-`demo/prepare-iteration.sh`; its default `demo-scripted-baseline-v7` tag includes the
+`demo/prepare-iteration.sh`; its default `demo-scripted-baseline-v8` tag includes the
 scenario, presenter-owned HITL rules, preparation command, and unfixed bug.
 
 ## Scope

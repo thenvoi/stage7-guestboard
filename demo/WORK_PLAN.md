@@ -10,8 +10,8 @@ and distinct guests remain in first-seen order.
 
 1. Confirm the prepared user-visible contract and delegate the bounded repair.
 2. Correct normalization in the shared core used by the browser and tests.
-3. Review one exact committed revision, its fast-unit evidence, and the presenter's
-   manual browser observation.
+3. Review one exact committed revision and its fast-unit evidence against the visible
+   two-card/count-two contract.
 4. Summarize the evidence and any remaining limitation.
 
 ```arch
@@ -59,6 +59,6 @@ and distinct guests remain in first-seen order.
 ## Evidence rule
 
 Every result shown in the room must identify whether it came from the Developer's fast
-unit command, QA's review of the exact revision, or the presenter's manual browser
-observation. The plan is prepared; evidence is reported only after its bounded step
-occurs.
+unit command or QA's review of the exact revision. Two cards and count two is the agreed
+visible contract; do not claim a browser observation unless the presenter actually made
+one. Evidence is reported only after its bounded step occurs.

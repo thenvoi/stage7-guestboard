@@ -2,8 +2,8 @@
 
 This is the operator runbook for an 8–10 minute collaboration demo inside the
 25-minute session. It removes codebase exploration and open-ended design time. The
-collaboration events, source handoffs, fast test, QA review, and browser observation
-remain real. Full automation belongs to preflight.
+collaboration events, source handoffs, fast test, and QA review remain real. Full
+automation and optional browser confirmation belong to operator preflight.
 
 Do not attach this runbook to the room. Attach `demo/WORK_PLAN.md`; it contains the
 audience-safe delivery plan and structured software-architecture diagram.
@@ -13,23 +13,20 @@ audience-safe delivery plan and structured software-architecture diagram.
 Edit `demo/scenario-control.json` before starting any agents.
 
 - `enabled: true` activates this conference flow.
-- `transition_mode: "hitl"` enables the three purposeful presenter decisions. Use it
-  on stage. `"continuous"` skips the first two gates for timing rehearsals; QA still
-  needs an actual browser observation.
+- `transition_mode: "hitl"` enables the two purposeful presenter decisions. Use it
+  on stage. `"continuous"` skips them for timing rehearsals.
 - `cast: "core"` is the supported stage cast: Architect, Developer, Engineering
   Manager, Product Manager, and QA Engineer.
 - `execution_mode: "bounded-live"` keeps every role on its assigned contribution.
 - `live_check: "node-regression-only"` permits the Developer's fast Node regression.
-- `browser_check: "presenter-manual"` reserves the visible preview check for the
-  presenter.
+- `browser_check: "operator-optional"` keeps preview display outside the agent flow.
 - `allow_worktrees` and `allow_browser_automation` must remain `false`.
 - `evidence_policy` must remain `"observed-only"`.
 
-The three presenter decisions are:
+The two presenter decisions are:
 
 1. Architect: move from the two terminals to desktop coordination.
 2. Product Manager: approve the user-visible contract.
-3. QA: record what the presenter actually sees in the browser.
 
 Routine assignment, implementation, review handoff, and closeout do not need human
 approval. They proceed through addressed room messages.
@@ -55,7 +52,7 @@ contract. Engineering Manager owns later component focus and status updates.
 ## Task model
 
 Engineering Manager creates the contract card first and delegates it to Product
-Manager. After the contract is approved, the Manager creates the remaining four cards
+Manager. After the contract is approved, the Manager creates the remaining three cards
 in order:
 
 | Shared task | Initial owner | Diagram component | Completion evidence |
@@ -63,7 +60,6 @@ in order:
 | Confirm import behavior | Product Manager | `guest-board` | contract posted in room |
 | Repair normalization order | Claude Developer | `guest-normalizer` | exact commit and fast Node result |
 | Review core behavior | QA Engineer | `guest-normalizer` | QA verdict on exact revision |
-| Verify visible cards and count | QA Engineer | `guest-board` | presenter's manual observation |
 | Summarize delivery evidence | Engineering Manager | none | revision, evidence, limitations |
 
 Live board IDs are authoritative. Each role separately creates its native/private
@@ -75,11 +71,11 @@ tasks and links the applicable one to its assigned shared card.
 | Claude Developer | inspect target/regression; apply repair; run fast check; commit and hand off |
 | Engineering Manager | `Coordinate team and shared board`; `Track implementation and review gates`; `Publish final evidence summary` |
 | Product Manager | confirm import semantics and visible outcome |
-| QA Engineer | review exact candidate/unit evidence; record manual browser cards/count |
+| QA Engineer | review exact candidate and Developer-reported unit evidence |
 
 The Manager must visibly maintain its three tasks: complete the first after both
-desktop roles and all five shared cards are in place, complete the second after QA's
-verdict and browser observation, and complete the third after publishing closeout.
+desktop roles and all four shared cards are in place, complete the second after QA's
+verdict, and complete the third after publishing closeout.
 
 ## Message sequence
 
@@ -93,10 +89,10 @@ These are content contracts, not canned lines. Every result uses observed values
 | desktop opens | Manager → Product Manager | concise user-visible contract review |
 | contract approved | Product Manager → Manager and QA | normalization, blanks, order, visible result |
 | work dispatched | Manager → Developer | shared card ID, component, exact scope, committed handoff request |
-| work dispatched | Manager → QA | review card IDs, independence rule, browser observation expectation |
+| work dispatched | Manager → QA | review card ID, independence rule, exact evidence expectation |
 | QA prepares review | QA → Developer | exact revision and evidence requested |
-| candidate ready | Developer → QA | exact commit, actual fast command/result, browser review still outstanding |
-| presenter observes preview | QA → Manager | exact revision, Developer evidence, QA verdict, presenter observation, limitation |
+| candidate ready | Developer → QA | exact commit and actual fast command/result |
+| QA review complete | QA → Manager | exact revision, Developer evidence, QA verdict, limitation |
 | closeout | Manager → room | contract, revision, evidence chain, ownership, limitations |
 
 Every actionable request names one recipient. Avoid generic chatter and unsupported
@@ -112,10 +108,10 @@ Prepare these identities:
 | Claude Developer | attached Claude terminal | bounded implementation and revision handoff |
 | Engineering Manager | Jam-hosted Codex | desktop coordination and closeout |
 | Product Manager | Jam-hosted Codex | acceptance contract |
-| QA Engineer | Jam-hosted runtime | independent review and browser observation gate |
+| QA Engineer | Jam-hosted runtime | independent exact-revision review |
 
 1. Run `./demo/prepare-iteration.sh demo/<run-name>` from
-   `demo-scripted-baseline-v7`. Never reuse a repaired branch.
+   `demo-scripted-baseline-v8`. Never reuse a repaired branch.
 2. Put the Architect and Developer on that exact starting revision. Prepare runtime
    access and dependencies before the session.
 3. Offstage, confirm baseline checks pass, retain the expected failing regression, and
@@ -123,8 +119,8 @@ Prepare these identities:
 4. Start Architect and Developer in two terminals in the same fresh room. Confirm the
    Engineering Manager, Product Manager, and QA Engineer are discoverable before the
    public run. Do not reuse a room with old messages, tasks, plans, or HITL requests.
-5. Open the preview on the exact run branch. Confirm the footer source identity and
-   clear synthetic browser data.
+5. Optionally open the preview on the exact run branch if the presenter wants to show
+   the UI; the agent flow does not wait for or ask about it.
 6. Check that `demo/WORK_PLAN.md` renders its plan and software architecture map.
 7. Keep a clearly labelled prerecorded fallback available.
 
@@ -156,7 +152,7 @@ the sample.
 **Presenter gate:** Product Manager asks whether the contract is sufficient to dispatch
 work. On approval, it sends the contract to Manager and QA.
 
-The Manager then creates the other four shared cards, completes its first private task,
+The Manager then creates the other three shared cards, completes its first private task,
 starts `Track implementation and review gates`, and directly dispatches Developer and
 QA. There is no additional Manager question.
 
@@ -169,30 +165,25 @@ Developer makes the prepared normalization-order repair, runs
 commit and observed output. This handoff is direct; it does not ask the presenter for
 permission.
 
-QA reviews the exact revision and Developer evidence without editing implementation.
-QA separates the Developer's unit evidence from browser evidence and prepares the one
-manual observation request.
+QA reviews the exact revision and Developer evidence without editing implementation,
+then sends its verdict directly to the Manager. QA does not ask the room for preview
+state.
 
 **Visible state:** the shared normalizer card moves through Developer ownership and QA
 review with one exact revision attached.
 
-## Section 4 — human browser evidence and closeout (about 2 minutes)
+## Section 4 — evidence closeout (about 1 minute)
 
-**Owners:** QA Engineer and Engineering Manager.
+**Owner:** Engineering Manager.
 
-The presenter imports the configured three lines in the already-open preview. If that
-observation has not already been supplied for the exact candidate, QA uses one native
-question with factual choices such as `Two cards; count two`, `Three cards; count
-three`, or `Preview unavailable`.
-
-After the presenter answers, QA sends Manager one verdict containing the exact revision,
-Developer-reported command/result, QA review, presenter-reported browser result, and
-any limitation. QA does not recruit another reviewer.
+After QA sends its verdict, no further approval or preview question is required.
 
 Manager completes `Track implementation and review gates`, starts and completes
 `Publish final evidence summary` around the room closeout, and summarizes the product
-contract, exact source revision, Developer unit evidence, QA verdict, presenter browser
-observation, and limitations. End on the Work board and software architecture map.
+contract, exact source revision, Developer unit evidence, QA verdict, and limitations.
+The Manager states that the agreed visible outcome is two cards/count two without
+claiming personal preview observation. End on the Work board and software architecture
+map.
 
 ## Recovery cuts
 
@@ -200,5 +191,5 @@ observation, and limitations. End on the Work board and software architecture ma
   intervention visible before continuing.
 - If implementation is late, use the last reviewed rehearsal commit only as a clearly
   labelled fallback.
-- If the browser observation fails or is unavailable, end with that blocker. A truthful
-  red result still demonstrates coordination.
+- If QA finds a blocker, return it to the Developer. A truthful red result still
+  demonstrates coordination.

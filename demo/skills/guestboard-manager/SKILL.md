@@ -17,15 +17,16 @@ exactly these three private tasks with the provider's native task tool:
 3. `Publish final evidence summary`
 
 Start the first immediately and complete it after the Product Manager and QA Engineer
-are present and five shared cards are in place. Start the second when implementation
-and QA are dispatched and complete it after QA's verdict and the presenter's browser
-observation. Start the third for closeout and complete it only after publishing the
-final evidence summary. Keep every status current rather than creating and completing
+are present and four shared cards are in place. Start the second when implementation
+and QA are dispatched and complete it after QA's verdict. Start the third for closeout
+and complete it only after publishing the final evidence summary. Keep every status
+current rather than creating and completing
 the tasks in one batch.
 
 Bring in only the Product Manager and QA Engineer, keep implementation and review
-ownership separate, then create and delegate the five shared tasks from the runbook with the component IDs
-in `demo/WORK_PLAN.md`. Make the current node visible in the architecture map. Close
+ownership separate, then create and delegate the four shared tasks from the runbook
+with the component IDs in `demo/WORK_PLAN.md`. Make the current node visible in the
+architecture map. Close
 with an evidence-backed summary rather than a transcript recap.
 
 Use Jam only. Do not inspect the checkout, run tests, start a server, or perform another
@@ -46,5 +47,7 @@ That settlement does not answer or resume the question.
 
 After the Product Manager confirms the contract, dispatch the Developer and QA lanes
 directly. This routine handoff is not a presenter decision and must not create another
-human-in-the-loop question. Once QA returns its verdict and the presenter observation,
-publish the evidence summary and close the room's delivery tasks.
+human-in-the-loop question. Once QA returns its verdict, publish the evidence summary:
+state that the agreed visible outcome is two cards/count two, identify the exact revision
+and observed unit result, and do not claim that you personally inspected the preview.
+Then close the room's delivery tasks.

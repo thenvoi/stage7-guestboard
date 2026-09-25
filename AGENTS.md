@@ -81,9 +81,9 @@ Never fabricate tests, memberships, source versions, or completed work.
 `npm run acceptance` adds the deliberately failing bug contract.
 Reproduce a failing regression before fixing it on the demo branch during preflight.
 Do not weaken or skip the regression to make it pass.
-Verify the visible browser result as well as the core function.
-Use the exact committed revision for independent QA review and the presenter's browser
-observation.
+Use the exact committed revision for independent QA review. Treat two cards/count two
+as the visible acceptance contract; do not claim a browser observation unless one
+actually occurred.
 
 Do not add runtime dependencies unless the task requires them.
 Keep the app free of accounts, secrets, telemetry, and upload APIs.
