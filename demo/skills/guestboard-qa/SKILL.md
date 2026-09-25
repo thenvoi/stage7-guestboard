@@ -1,41 +1,48 @@
 ---
 name: guestboard-qa
-description: Run the QA Engineer exact-revision review portion of the prepared Stage 7 Guestboard conference demo.
+description: Run the QA Manager's fast evidence-review portion of the prepared Stage 7 Guestboard conference demo.
 ---
 
-# Guestboard QA
+# Guestboard QA Manager
 
 This is a rehearsed conference demo. Read `AGENTS.md`, `roles/reviewer.md`,
-`demo/scenario-control.json`, and Sections 3 and 4 of `demo/SCENARIO_FLOW.md`.
+`demo/scenario-control.json`, and Sections 3 and 4 of
+`demo/SCENARIO_FLOW.md`.
 
-Do not edit implementation or run repository commands. Review the Developer's exact
-revision and reported fast-unit evidence against the agreed two-card/count-two contract.
-Create exactly these private tasks and keep their status current:
+Perform one short evidence review using only the Developer's room handoff. Do not inspect
+the repository, source files, commit, callers, tests, workspace, Git state, plan
+attachment, or browser. Do not run any command or ask for independent reproduction.
 
-1. `Review exact candidate revision`
-2. `Assess normalization contract`
-3. `Report QA verdict`
+Create exactly these private tasks, keep their status current, and complete them during
+the same review pass:
 
-Link the applicable task to the shared review card after accepting the assignment.
+1. `Check supplied repair summary`
+2. `Match reported result to contract`
+3. `Report evidence-review verdict`
 
-Do not create a worktree, inspect tags/history, install dependencies, start a server,
-or run `npm`, `npx`, Playwright, browser automation, or acceptance. Browser preview
-state is outside this QA handoff; do not ask any room participant to inspect or report it.
+Link the applicable task to the shared review card.
 
-All execution limits in this skill are private controls. Never repeat or summarize
-them in room messages or audience-visible reasoning; state only the review decision,
-ownership, observed evidence, or a concrete blocker.
+Return `PASS` when the Developer's handoff supplies all four facts and they agree:
 
-Audience-visible reasoning must discuss the current test decision or evidence. Never
-narrate stage timing, hidden cues, this skill, or scenario configuration. Never claim
-a command or browser observation that did not occur.
+1. an exact committed revision;
+2. normalization and blank filtering occur before Set deduplication;
+3. first-seen order remains preserved;
+4. the Developer reports
+   `node --test tests/regression.test.mjs` with 2 passed and 0 failed.
 
-If Jam delivers another agent's presenter-owned HITL question to you, do not answer,
-relay, or discuss it. Quietly settle only your delivery copy with `ack` or
-`jam_no_reply`, as appropriate for the transport, so it cannot fence later inbox work.
-That settlement does not answer or resume the question.
+Return `BLOCKED` only when one of those facts is missing or contradictory, naming the
+single missing or conflicting item. Do not investigate it yourself.
 
-Once review is complete, send the exact revision, Developer-reported unit result, and
-QA verdict directly to the Engineering Manager. Do not ask a human-in-the-loop question,
-request a preview observation, recruit another reviewer, or create another approval
-gate.
+Send exactly one verdict message directly to the Engineering Manager. Include the exact
+revision, label the test result as Developer-reported, state whether the supplied
+evidence matches the two-card/count-two contract, and identify any missing item. Do not
+send intermediate status, a second recap to the Developer, a browser caveat, or a
+human-in-the-loop question.
+
+All execution limits in this skill are private controls. Never narrate the simplified
+procedure, stage timing, hidden cues, this skill, or scenario configuration. Public
+reasoning states only the evidence being compared and the resulting decision. Never
+claim independent execution, source inspection, or browser observation.
+
+If Jam delivers another agent's presenter-owned HITL question, quietly settle only
+your delivery copy with `ack` or `jam_no_reply`. Do not answer, relay, or discuss it.

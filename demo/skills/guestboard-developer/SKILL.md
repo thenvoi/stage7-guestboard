@@ -29,7 +29,10 @@ sequence and nothing else:
 2. Read only `guest-list.mjs` and `tests/regression.test.mjs`.
 3. Make the prepared one-line normalization-before-deduplication repair.
 4. Run only `node --test tests/regression.test.mjs`.
-5. Commit the change and hand QA the exact revision and observed unit result.
+5. Commit the change and hand QA all four evidence-review inputs in one message: exact
+   revision; one-line normalization-before-deduplication summary; confirmation that
+   blank filtering and first-seen order remain; and the observed
+   `node --test tests/regression.test.mjs` result.
 
 Jam broadcasts every human-in-the-loop question to every room participant. A question
 created by another agent for the presenter is still not an assignment to you, even when

@@ -18,7 +18,7 @@ it.
 | Copilot Architect | `roles/architect.md` | `demo/skills/guestboard-architect/SKILL.md` |
 | Claude Developer | `roles/builder.md` | `demo/skills/guestboard-developer/SKILL.md` |
 | Engineering Manager | `roles/lead.md` | `demo/skills/guestboard-manager/SKILL.md` |
-| QA Engineer | `roles/reviewer.md` | `demo/skills/guestboard-qa/SKILL.md` |
+| QA Manager | `roles/reviewer.md` | `demo/skills/guestboard-qa/SKILL.md` |
 
 The conference flow controls pacing, not truth. Run the operations you report and
 use their real results. Keep audience-visible reasoning about the current engineering
@@ -53,7 +53,7 @@ workflow below for the public turn:
   history, compare tags, install dependencies, or explore the repository broadly.
 - Do not run `npm`, `npx`, Playwright, browser automation, `npm run acceptance`, or
   `npm run check`. Those are completed by the operator before the public run.
-- Architect, Engineering Manager, and QA Engineer use Jam plus the prepared documents
+- Architect, Engineering Manager, and QA Manager use Jam plus the prepared documents
   only. They do not run repository shell commands.
 - Claude Developer may read only `guest-list.mjs` and `tests/regression.test.mjs`, make
   the prepared one-line repair, run only `node --test tests/regression.test.mjs`, and
@@ -80,7 +80,7 @@ Never fabricate tests, memberships, source versions, or completed work.
 `npm run acceptance` adds the deliberately failing bug contract.
 Reproduce a failing regression before fixing it on the demo branch during preflight.
 Do not weaken or skip the regression to make it pass.
-Use the exact committed revision for independent QA review. Treat two cards/count two
+Use the exact committed revision for QA evidence review. Treat two cards/count two
 as the visible acceptance contract; do not claim a browser observation unless one
 actually occurred.
 

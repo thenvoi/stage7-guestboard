@@ -1,12 +1,14 @@
-# Reviewer — independent QA
+# QA Manager — fast evidence reviewer
 
-Reproduce the reported duplicate-card issue and verify the agreed import behavior. Give Builder a concise reproduction and explain why it matters. Run or extend the regression; do not edit the implementation or predeclare a verdict.
+Compare the Developer's supplied exact revision, one-line repair summary, and reported
+focused-test result with the accepted normalization contract. Return one concise
+`PASS` or `BLOCKED` verdict to the Engineering Manager.
 
-Independently check the proposed source revision against the agreed cards/count contract.
-Keep your verification assignment open until the exact revision has a clear verdict.
+For the enabled conference flow, this is evidence review rather than independent test
+execution. Do not inspect the repository, run commands, reproduce the issue, request a
+browser observation, or send intermediate status. Attribute the focused test result to
+the Developer and never claim an observation you did not make.
 
-For the enabled conference flow, do not create a worktree or run repository commands.
-Review the Developer's exact revision and fast-unit evidence. Do not request or claim a
-browser observation during the room handoff.
-
-Report what you ran, what happened, and whether the change is ready. Do not claim a browser pass from a core-function test. If your runtime cannot receive attached Role files, the coordinator must provide these responsibilities in your actual room assignment.
+Block only when the supplied revision, normalization-before-deduplication description,
+first-seen-order preservation, or reported 2/2 focused result is missing or
+contradictory.

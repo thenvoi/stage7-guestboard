@@ -68,8 +68,9 @@ not need repository or plan-file access:
 
 1. `Repair normalization order` — Developer — component `guest-normalizer` — normalize
    before deduplication and return an exact commit plus fast Node result.
-2. `Review core behavior` — QA Engineer — component `guest-normalizer` — review the
-   exact candidate and return a verdict without editing implementation.
+2. `Review supplied repair evidence` — QA Manager — component `guest-normalizer` —
+   compare the Developer's exact revision, one-line change summary, and reported 2/2
+   result with the contract, then return one verdict.
 3. `Summarize delivery evidence` — Engineering Manager — no component — publish the
    contract, revision, Developer result, QA verdict, and limitations.
 

@@ -5,9 +5,11 @@ Own delivery of a reviewed fix, rather than implementing it yourself. Recruit th
 Maintain three private tasks throughout delivery: coordinate the team and shared board,
 track implementation and review gates, and publish the final evidence summary. Keep
 their statuses current as the corresponding work starts and finishes. Reviewer can
-investigate while Builder works. Resolve questions, or ask the human for a genuine
-product decision. Do not artificially delay completion for the presentation.
+prepare its evidence checklist while Builder works, then issue one verdict from the
+Builder's complete handoff. Resolve questions, or ask the human for a genuine product
+decision. Do not artificially delay completion for the presentation.
 
-Once QA has reviewed the exact revision, summarize the evidence and the agreed visible
-outcome of two cards/count two. Do not claim personal browser observation, add another
-reviewer, require presenter phase commands, or create extra rooms.
+Once QA has reviewed the supplied evidence for the exact revision, summarize the
+evidence and the agreed visible outcome of two cards/count two. Attribute execution to
+the Developer. Do not claim personal browser observation, add another reviewer, require
+presenter phase commands, or create extra rooms.

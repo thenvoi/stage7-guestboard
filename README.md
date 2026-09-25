@@ -23,7 +23,7 @@ When serving inside a disposable sandbox, use its supported preview-port forward
 Import `Ada`, ` ada `, and `Lin`, one per line. The baseline shows three guest cards, including duplicate `ada` cards, and a count of three. The intended result is two cards and a count of two.
 
 Fix the implementation while preserving blank-line handling and first-seen order.
-Obtain independent QA review of the exact committed revision against the visible
+Obtain QA evidence review of the exact committed revision against the visible
 two-card/count-two contract. The browser and tests use the same `guest-list.mjs`
 implementation.
 
@@ -78,13 +78,13 @@ See [the operator guide](docs/operator-guide.md) for the task, source handoff, p
 
 The presenter runbook is [demo/SCENARIO_FLOW.md](demo/SCENARIO_FLOW.md). It stages a
 short terminal handoff followed by desktop coordination with the Engineering Manager
-and QA Engineer.
+and QA Manager.
 `demo/scenario-control.json` turns the flow on and selects presenter-gated or continuous
 pacing. Non-owning agents quietly settle their own copies of broadcast presenter
 questions without answering them, preventing pull-receiver inbox fencing. The
 audience-safe plan and live Jam architecture map are in
 [demo/WORK_PLAN.md](demo/WORK_PLAN.md). Start each conference run with
-`demo/prepare-iteration.sh`; its default `demo-scripted-baseline-v10` tag includes the
+`demo/prepare-iteration.sh`; its default `demo-scripted-baseline-v11` tag includes the
 scenario, presenter-owned HITL rules, preparation command, and unfixed bug.
 
 ## Scope

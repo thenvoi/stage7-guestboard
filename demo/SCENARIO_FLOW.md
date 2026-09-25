@@ -2,7 +2,7 @@
 
 This is the operator runbook for an 8–10 minute collaboration demo inside the
 25-minute session. It removes codebase exploration and open-ended design time. The
-collaboration events, source handoffs, fast test, and QA review remain real. Full
+collaboration events, source handoffs, fast test, and QA evidence review remain real. Full
 automation and optional browser confirmation belong to operator preflight.
 
 Do not attach this runbook to the room. Attach `demo/WORK_PLAN.md`; it contains the
@@ -16,7 +16,7 @@ Edit `demo/scenario-control.json` before starting any agents.
 - `transition_mode: "hitl"` enables the one purposeful presenter decision. Use it
   on stage. `"continuous"` skips it for timing rehearsals.
 - `cast: "minimal"` is the supported stage cast: Architect, Developer, Engineering
-  Manager, and QA Engineer.
+  Manager, and QA Manager.
 - `execution_mode: "bounded-live"` keeps every role on its assigned contribution.
 - `live_check: "node-regression-only"` permits the Developer's fast Node regression.
 - `browser_check: "operator-optional"` keeps preview display outside the agent flow.
@@ -56,7 +56,7 @@ these three shared cards in order:
 | Shared task | Initial owner | Diagram component | Completion evidence |
 |---|---|---|---|
 | Repair normalization order | Claude Developer | `guest-normalizer` | exact commit and fast Node result |
-| Review core behavior | QA Engineer | `guest-normalizer` | QA verdict on exact revision |
+| Review supplied repair evidence | QA Manager | `guest-normalizer` | one evidence-review verdict |
 | Summarize delivery evidence | Engineering Manager | none | revision, evidence, limitations |
 
 Live board IDs are authoritative. Each role separately creates its native/private
@@ -67,7 +67,7 @@ tasks and links the applicable one to its assigned shared card.
 | Copilot Architect | `Publish plan and architecture map`; `Delegate bounded repair scope`; `Request desktop coordination` |
 | Claude Developer | `Repair guest normalization order`; `Run regression and commit repair`; `Hand exact revision to QA` |
 | Engineering Manager | `Coordinate team and shared board`; `Track implementation and review gates`; `Publish final evidence summary` |
-| QA Engineer | `Review exact candidate revision`; `Assess normalization contract`; `Report QA verdict` |
+| QA Manager | `Check supplied repair summary`; `Match reported result to contract`; `Report evidence-review verdict` |
 
 The Manager must visibly maintain its three tasks: complete the first after QA is
 present and all three shared cards are in place, complete the second after QA's
@@ -83,10 +83,9 @@ These are content contracts, not canned lines. Every result uses observed values
 | Developer accepts | Developer → Architect | brief acceptance of behavior and ownership |
 | presenter switches surfaces | Architect → Engineering Manager | contract, plan/diagram status, active Developer handoff, and all three card definitions including owners/components/evidence |
 | work dispatched | Manager → Developer | shared card ID, component, exact scope, committed handoff request |
-| work dispatched | Manager → QA | review card ID, independence rule, exact evidence expectation |
-| QA prepares review | QA → Developer | exact revision and evidence requested |
-| candidate ready | Developer → QA | exact commit and actual fast command/result |
-| QA review complete | QA → Manager | exact revision, Developer evidence, QA verdict, limitation |
+| work dispatched | Manager → QA | review card ID, the three exact private-task names, and one-pass evidence-review contract |
+| candidate ready | Developer → QA | exact commit, one-line repair summary, preservation statement, and actual fast command/result |
+| QA evidence review complete | QA → Manager | one PASS/BLOCKED verdict with exact revision and Developer-reported result |
 | closeout | Manager → room | contract, revision, evidence chain, ownership, limitations |
 
 Every actionable request names one recipient. Avoid generic chatter and unsupported
@@ -101,16 +100,16 @@ Prepare these identities:
 | Copilot Architect | attached Copilot terminal | framing, plan, first presenter gate |
 | Claude Developer | attached Claude terminal | bounded implementation and revision handoff |
 | Engineering Manager | Jam-hosted Codex | desktop coordination and closeout |
-| QA Engineer | Jam-hosted runtime | independent exact-revision review |
+| QA Manager | Jam-hosted runtime | fast supplied-evidence review |
 
 1. Run `./demo/prepare-iteration.sh demo/<run-name>` from
-   `demo-scripted-baseline-v10`. Never reuse a repaired branch.
+   `demo-scripted-baseline-v11`. Never reuse a repaired branch.
 2. Put the Architect and Developer on that exact starting revision. Prepare runtime
    access and dependencies before the session.
 3. Offstage, confirm baseline checks pass, retain the expected failing regression, and
    preflight the repaired browser behavior.
 4. Start Architect and Developer in two terminals in the same fresh room. Confirm the
-   Engineering Manager and QA Engineer are discoverable before the public run. Do not
+   Engineering Manager and QA Manager are discoverable before the public run. Do not
    reuse a room with old messages, tasks, plans, or HITL requests.
    Read-only repository access may be provided to the Docker Manager, but the Architect
    handoff remains self-contained and must not depend on that access.
@@ -146,18 +145,19 @@ starts `Track implementation and review gates`, and directly dispatches Develope
 QA. It does not request card metadata or plan access. There is no additional presenter
 question.
 
-## Section 3 — implementation and independent review (about 3 minutes)
+## Section 3 — implementation and fast evidence review (about 2 minutes)
 
-**Owners:** Claude Developer and QA Engineer, coordinated by Engineering Manager.
+**Owners:** Claude Developer and QA Manager, coordinated by Engineering Manager.
 
 Developer makes the prepared normalization-order repair, runs
 `node --test tests/regression.test.mjs`, commits the result, and sends QA the exact
 commit and observed output. This handoff is direct; it does not ask the presenter for
 permission.
 
-QA reviews the exact revision and Developer evidence without editing implementation,
-then sends its verdict directly to the Manager. QA does not ask the room for preview
-state.
+QA compares only the Developer's complete room handoff with the accepted contract. It
+does not inspect or execute the repository. It completes its three named tasks in one
+pass, sends one `PASS` or `BLOCKED` verdict directly to the Manager, and sends no
+intermediate status or duplicate recap.
 
 **Visible state:** the shared normalizer card moves through Developer ownership and QA
 review with one exact revision attached.
