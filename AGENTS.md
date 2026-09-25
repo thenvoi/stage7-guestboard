@@ -8,8 +8,10 @@ prepared Stage 7 conference flow. Before taking a demo turn, read only:
 1. `demo/scenario-control.json`
 2. the role brief and role skill from this table
 
-The role skill names the one scenario section needed for that role. Do not read the
-whole operator runbook unless the role skill explicitly requires it.
+Each role skill provides the public-turn procedure or explicitly names the one scenario
+section needed for that role. Do not read `README.md`, the operator runbook, another
+role's files, or repository source unless the assigned role skill explicitly permits
+it.
 
 | On-screen role | Role brief | Role skill |
 |---|---|---|
@@ -59,7 +61,8 @@ Make demonstration changes only on a named `demo/` branch.
 Never merge a demonstration fix into `main`.
 Never force-push or discard another participant's work.
 
-Read `README.md` and your assigned role before working.
+When the conference flow is disabled, read `README.md` and your assigned role before
+working. When it is enabled, use only the restricted reading list above.
 Keep implementation and review ownership distinct.
 Talk naturally with teammates; do not use stage tokens or canned dialogue.
 Ask for review when work is ready, not when a presenter announces a phase.

@@ -77,7 +77,7 @@ Product Manager, QA Engineer, Adversarial Reviewer, and an optional UI/UX check.
 `demo/scenario-control.json` turns the flow on and selects presenter-gated or continuous
 pacing. The audience-safe plan and live Jam architecture map are in
 [demo/WORK_PLAN.md](demo/WORK_PLAN.md). Start each conference run with
-`demo/prepare-iteration.sh`; its default `demo-scripted-baseline-v2` tag includes the
+`demo/prepare-iteration.sh`; its default `demo-scripted-baseline-v3` tag includes the
 scenario, presenter-owned HITL rules, preparation command, and unfixed bug.
 
 ## Scope

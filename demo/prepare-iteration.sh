@@ -8,7 +8,7 @@ Usage:
 
 Examples:
   ./demo/prepare-iteration.sh demo/stage7-run-02
-  ./demo/prepare-iteration.sh demo/2026-09-25-rehearsal-01 demo-scripted-baseline-v2
+  ./demo/prepare-iteration.sh demo/2026-09-25-rehearsal-01 demo-scripted-baseline-v3
 
 The command is intentionally non-destructive:
   - it refuses dirty workspaces, existing branches, and extra worktrees;
@@ -26,7 +26,7 @@ die() {
 }
 
 run_branch="${1:-}"
-baseline_ref="${2:-${DEMO_BASELINE_REF:-demo-scripted-baseline-v2}}"
+baseline_ref="${2:-${DEMO_BASELINE_REF:-demo-scripted-baseline-v3}}"
 
 if [[ -z "$run_branch" || "$run_branch" == "-h" || "$run_branch" == "--help" ]]; then
   usage

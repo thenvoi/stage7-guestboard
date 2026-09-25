@@ -136,7 +136,7 @@ passed a real question-bridge smoke test. Rebuild or reconfigure the QA identity
 the talk if necessary; do not discover that incompatibility on stage.
 
 1. Prepare a fresh named `demo/` run branch with the repository preflight. Its default
-   `demo-scripted-baseline-v2` contains the prepared scenario, presenter-owned HITL
+   `demo-scripted-baseline-v3` contains the prepared scenario, presenter-owned HITL
    rules, and original bug, but no repair. Never reuse a completed run branch:
 
    ```sh

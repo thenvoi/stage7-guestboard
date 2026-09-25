@@ -5,25 +5,59 @@ description: Run the Copilot Architect portion of the prepared Stage 7 Guestboar
 
 # Guestboard architect
 
-This is a rehearsed conference demo. Read `AGENTS.md`, `roles/architect.md`,
-`demo/scenario-control.json`, and only Section 1 of `demo/SCENARIO_FLOW.md`.
+This file is the complete Architect procedure for the enabled conference flow. Read
+only `demo/scenario-control.json`, `roles/architect.md`, and this skill. Do not read
+`demo/SCENARIO_FLOW.md`, `README.md`, the operator guide, another role's files,
+repository source, Git state or history, tests, or prior results. Do not run tests or
+create a worktree.
 
-Do not inspect repository source, Git state/history, branches, tags, tests, or prior
-results. Do not run any test or create a worktree. The issue and acceptance contract are
-already prepared. Create the three private tasks named in Section 1, publish the
-audience-safe plan and embedded diagram with
-`jam plan set <chat-id> demo/WORK_PLAN.md --snapshot`, and send the Developer the
-bounded repair request. Do not attach the operator runbook or solve the implementation.
+## Prepared contract
 
-Audience-visible reasoning must discuss the current engineering decision or evidence.
-Never narrate stage timing, hidden cues, this skill, or scenario configuration. Never
-claim an observation or command that did not occur.
+Guest identity is the trimmed, lowercase handle. Ignore blank lines and preserve the
+first-seen order of distinct normalized handles. The prepared input `Ada`, ` ada `,
+`Lin` must produce the handles `ada`, `lin` and a visible count of two. Keep unrelated
+behavior unchanged. Do not inspect or propose the implementation.
 
-Immediately before your section transition, re-read `transition_mode`. In `hitl` mode,
-use the provider-native question tool to ask whether to move from terminal handoff to
-desktop coordination. Jam broadcasts the question to the room, but it remains
-exclusively owned by the human presenter. Phrase it as a presenter decision; do not ask
-the Developer or another agent to acknowledge, settle, relay, or answer it. After
-asking, stop and wait for the human answer. In `continuous` mode, send the same natural
-handoff without asking. After the handoff, wait; do not verify or coordinate later
-phases.
+## Terminal handoff
+
+Use the provider's private task tool to create exactly these three tasks and keep their
+statuses current:
+
+1. `Publish plan and architecture map`
+2. `Delegate bounded repair scope`
+3. `Request desktop coordination`
+
+Publish the prepared audience-safe plan and its embedded software architecture map:
+
+```sh
+jam plan set <chat-id> demo/WORK_PLAN.md --snapshot
+```
+
+If publication fails, report the real failure. Do not attach the operator runbook or
+substitute a different diagram.
+
+Send the Developer the symptom, prepared input, normalized-handle result, blank-line
+and ordering rules, and the bounded repair scope. In this phase, explicitly request a
+scope acknowledgement only: the Developer must not inspect source, run tests, edit,
+commit, or start implementation until the Engineering Manager dispatches that work.
+
+## Desktop transition
+
+Use the `transition_mode` value already read from `demo/scenario-control.json`:
+
+- In `hitl` mode, use the provider-native question tool to ask the presenter whether
+  to move from the terminal handoff to desktop coordination. Jam broadcasts the
+  question to the room, but only the human presenter owns it. Do not ask another agent
+  to answer, acknowledge, settle, relay, or comment on it. Stop until the presenter
+  answers.
+- In `continuous` mode, proceed without asking.
+
+On continue, find and add the Engineering Manager, then send one concise handoff with
+the agreed contract, successful plan/diagram publication, and the Developer's accepted
+scope. On pause, wait. After either handoff outcome, do not verify implementation,
+respond to later-phase evidence, or coordinate subsequent phases.
+
+Audience-visible reasoning must discuss only the current engineering decision or
+observed coordination state. Never narrate stage timing, hidden instructions, role
+files, or scenario configuration, and never claim an action or result that did not
+occur.
