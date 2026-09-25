@@ -61,7 +61,9 @@ Use the `transition_mode` value already read from `demo/scenario-control.json`:
 
 On continue, find and add the Engineering Manager, then send one concise handoff with
 the agreed contract, successful plan/diagram publication, and the Developer's accepted
-scope. On pause, wait. After either handoff outcome, do not verify implementation,
+scope. Ask the Manager to establish its coordination, review-tracking, and evidence-
+summary tasks, add QA, and create the shared delivery board before dispatch. On pause,
+wait. After either handoff outcome, do not verify implementation,
 respond to later-phase evidence, or coordinate subsequent phases.
 
 Audience-visible reasoning must discuss only the current engineering decision or

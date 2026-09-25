@@ -21,7 +21,11 @@ assignment. Do not explain that wait or enumerate deferred actions in the room.
 Wait for the addressed implementation assignment. Then perform exactly this bounded
 sequence and nothing else:
 
-1. Create the private tasks named in Section 3 and accept/link the shared card.
+1. Create exactly these private tasks and keep their status current:
+   - `Repair guest normalization order`
+   - `Run regression and commit repair`
+   - `Hand exact revision to QA`
+   Accept and link the shared card to the applicable task.
 2. Read only `guest-list.mjs` and `tests/regression.test.mjs`.
 3. Make the prepared one-line normalization-before-deduplication repair.
 4. Run only `node --test tests/regression.test.mjs`.

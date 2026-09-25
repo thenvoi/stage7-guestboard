@@ -10,8 +10,13 @@ This is a rehearsed conference demo. Read `AGENTS.md`, `roles/reviewer.md`,
 
 Do not edit implementation or run repository commands. Review the Developer's exact
 revision and reported fast-unit evidence against the agreed two-card/count-two contract.
-Create your private QA tasks and link them to the shared review card after accepting the
-assignment.
+Create exactly these private tasks and keep their status current:
+
+1. `Review exact candidate revision`
+2. `Assess normalization contract`
+3. `Report QA verdict`
+
+Link the applicable task to the shared review card after accepting the assignment.
 
 Do not create a worktree, inspect tags/history, install dependencies, start a server,
 or run `npm`, `npx`, Playwright, browser automation, or acceptance. Browser preview

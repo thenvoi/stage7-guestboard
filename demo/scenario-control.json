@@ -1,8 +1,8 @@
 {
-  "schema_version": 7,
+  "schema_version": 8,
   "enabled": true,
   "transition_mode": "hitl",
-  "cast": "core",
+  "cast": "minimal",
   "execution_mode": "bounded-live",
   "live_check": "node-regression-only",
   "browser_check": "operator-optional",

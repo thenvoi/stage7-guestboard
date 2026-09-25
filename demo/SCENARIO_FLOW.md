@@ -13,20 +13,19 @@ audience-safe delivery plan and structured software-architecture diagram.
 Edit `demo/scenario-control.json` before starting any agents.
 
 - `enabled: true` activates this conference flow.
-- `transition_mode: "hitl"` enables the two purposeful presenter decisions. Use it
-  on stage. `"continuous"` skips them for timing rehearsals.
-- `cast: "core"` is the supported stage cast: Architect, Developer, Engineering
-  Manager, Product Manager, and QA Engineer.
+- `transition_mode: "hitl"` enables the one purposeful presenter decision. Use it
+  on stage. `"continuous"` skips it for timing rehearsals.
+- `cast: "minimal"` is the supported stage cast: Architect, Developer, Engineering
+  Manager, and QA Engineer.
 - `execution_mode: "bounded-live"` keeps every role on its assigned contribution.
 - `live_check: "node-regression-only"` permits the Developer's fast Node regression.
 - `browser_check: "operator-optional"` keeps preview display outside the agent flow.
 - `allow_worktrees` and `allow_browser_automation` must remain `false`.
 - `evidence_policy` must remain `"observed-only"`.
 
-The two presenter decisions are:
+The one presenter decision is:
 
 1. Architect: move from the two terminals to desktop coordination.
-2. Product Manager: approve the user-visible contract.
 
 Routine assignment, implementation, review handoff, and closeout do not need human
 approval. They proceed through addressed room messages.
@@ -46,18 +45,16 @@ jam plan set <chat-id> demo/WORK_PLAN.md --snapshot
 
 The structured `arch` block is the Guestboard software architecture: browser UI,
 shared guest-list logic, and static preview delivery. It is not a process diagram.
-The Architect owns the initial publication. Product Manager confirms its acceptance
-contract. Engineering Manager owns later component focus and status updates.
+The Architect owns the initial publication and acceptance contract. Engineering
+Manager owns later component focus and status updates.
 
 ## Task model
 
-Engineering Manager creates the contract card first and delegates it to Product
-Manager. After the contract is approved, the Manager creates the remaining three cards
-in order:
+Engineering Manager receives the accepted contract from the Architect and creates
+these three shared cards in order:
 
 | Shared task | Initial owner | Diagram component | Completion evidence |
 |---|---|---|---|
-| Confirm import behavior | Product Manager | `guest-board` | contract posted in room |
 | Repair normalization order | Claude Developer | `guest-normalizer` | exact commit and fast Node result |
 | Review core behavior | QA Engineer | `guest-normalizer` | QA verdict on exact revision |
 | Summarize delivery evidence | Engineering Manager | none | revision, evidence, limitations |
@@ -67,14 +64,13 @@ tasks and links the applicable one to its assigned shared card.
 
 | Agent | Private/native tasks |
 |---|---|
-| Copilot Architect | publish plan/diagram; delegate bounded repair; request desktop coordination |
-| Claude Developer | inspect target/regression; apply repair; run fast check; commit and hand off |
+| Copilot Architect | `Publish plan and architecture map`; `Delegate bounded repair scope`; `Request desktop coordination` |
+| Claude Developer | `Repair guest normalization order`; `Run regression and commit repair`; `Hand exact revision to QA` |
 | Engineering Manager | `Coordinate team and shared board`; `Track implementation and review gates`; `Publish final evidence summary` |
-| Product Manager | confirm import semantics and visible outcome |
-| QA Engineer | review exact candidate and Developer-reported unit evidence |
+| QA Engineer | `Review exact candidate revision`; `Assess normalization contract`; `Report QA verdict` |
 
-The Manager must visibly maintain its three tasks: complete the first after both
-desktop roles and all four shared cards are in place, complete the second after QA's
+The Manager must visibly maintain its three tasks: complete the first after QA is
+present and all three shared cards are in place, complete the second after QA's
 verdict, and complete the third after publishing closeout.
 
 ## Message sequence
@@ -86,8 +82,6 @@ These are content contracts, not canned lines. Every result uses observed values
 | terminal intake | Architect → Developer | symptom, sample, expected cards/count, preservation rules, ownership request |
 | Developer accepts | Developer → Architect | brief acceptance of behavior and ownership |
 | presenter switches surfaces | Architect → Engineering Manager | contract, plan/diagram status, active Developer handoff |
-| desktop opens | Manager → Product Manager | concise user-visible contract review |
-| contract approved | Product Manager → Manager and QA | normalization, blanks, order, visible result |
 | work dispatched | Manager → Developer | shared card ID, component, exact scope, committed handoff request |
 | work dispatched | Manager → QA | review card ID, independence rule, exact evidence expectation |
 | QA prepares review | QA → Developer | exact revision and evidence requested |
@@ -107,18 +101,17 @@ Prepare these identities:
 | Copilot Architect | attached Copilot terminal | framing, plan, first presenter gate |
 | Claude Developer | attached Claude terminal | bounded implementation and revision handoff |
 | Engineering Manager | Jam-hosted Codex | desktop coordination and closeout |
-| Product Manager | Jam-hosted Codex | acceptance contract |
 | QA Engineer | Jam-hosted runtime | independent exact-revision review |
 
 1. Run `./demo/prepare-iteration.sh demo/<run-name>` from
-   `demo-scripted-baseline-v8`. Never reuse a repaired branch.
+   `demo-scripted-baseline-v9`. Never reuse a repaired branch.
 2. Put the Architect and Developer on that exact starting revision. Prepare runtime
    access and dependencies before the session.
 3. Offstage, confirm baseline checks pass, retain the expected failing regression, and
    preflight the repaired browser behavior.
 4. Start Architect and Developer in two terminals in the same fresh room. Confirm the
-   Engineering Manager, Product Manager, and QA Engineer are discoverable before the
-   public run. Do not reuse a room with old messages, tasks, plans, or HITL requests.
+   Engineering Manager and QA Engineer are discoverable before the public run. Do not
+   reuse a room with old messages, tasks, plans, or HITL requests.
 5. Optionally open the preview on the exact run branch if the presenter wants to show
    the UI; the agent flow does not wait for or ask about it.
 6. Check that `demo/WORK_PLAN.md` renders its plan and software architecture map.
@@ -139,22 +132,15 @@ handoff; Developer ownership acknowledgement.
 **Presenter gate:** Architect asks whether to move to desktop coordination. On continue,
 the Architect adds and briefs the Engineering Manager. On pause, wait.
 
-## Section 2 — desktop makes the contract shared (about 2 minutes)
+## Section 2 — desktop makes ownership shared (about 1 minute)
 
-**Owners:** Engineering Manager and Product Manager.
+**Owner:** Engineering Manager.
 
 The Manager enters the existing room and immediately creates its three private tasks,
-starting `Coordinate team and shared board`. It brings in Product Manager and QA, then
-creates the contract card. Product Manager confirms: compare trimmed lowercase handles,
-ignore blanks, preserve first-seen distinct order, and show two handles/count two for
-the sample.
-
-**Presenter gate:** Product Manager asks whether the contract is sufficient to dispatch
-work. On approval, it sends the contract to Manager and QA.
-
-The Manager then creates the other three shared cards, completes its first private task,
+starting `Coordinate team and shared board`. It brings in QA, records the Architect's
+accepted contract, creates all three shared cards, completes its first private task,
 starts `Track implementation and review gates`, and directly dispatches Developer and
-QA. There is no additional Manager question.
+QA. There is no additional presenter question.
 
 ## Section 3 — implementation and independent review (about 3 minutes)
 
