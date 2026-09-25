@@ -32,6 +32,13 @@ must use the provider's native question tool so Jam projects it into Chat and th
 Work board. A normal chat question is not a substitute. Ask naturally, with a continue
 choice and a pause/discuss choice; do not recite fixed dialogue.
 
+Jam also delivers the room-wide question notification to non-owning agents. Those
+agents must never answer it, but they must quietly settle their own delivery copy with
+the transport's no-reply action (`ack` for a lease-backed CLI delivery or
+`jam_no_reply` for MCP). This is delivery bookkeeping, not participation in the
+decision, and prevents the notification from fencing later inbox work. The asking
+agent waits for the named human presenter's answer.
+
 ## Plan and diagram ownership
 
 Copilot Architect publishes the shared plan during Section 1:
@@ -136,7 +143,7 @@ passed a real question-bridge smoke test. Rebuild or reconfigure the QA identity
 the talk if necessary; do not discover that incompatibility on stage.
 
 1. Prepare a fresh named `demo/` run branch with the repository preflight. Its default
-   `demo-scripted-baseline-v3` contains the prepared scenario, presenter-owned HITL
+   `demo-scripted-baseline-v4` contains the prepared scenario, presenter-owned HITL
    rules, and original bug, but no repair. Never reuse a completed run branch:
 
    ```sh

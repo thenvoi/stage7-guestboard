@@ -48,8 +48,9 @@ Use the `transition_mode` value already read from `demo/scenario-control.json`:
 - In `hitl` mode, use the provider-native question tool to ask the presenter whether
   to move from the terminal handoff to desktop coordination. Jam broadcasts the
   question to the room, but only the human presenter owns it. Do not ask another agent
-  to answer, acknowledge, settle, relay, or comment on it. Stop until the presenter
-  answers.
+  to answer, relay, or comment on it. Non-owning agents must quietly settle only their
+  own delivery copy with `ack` or `jam_no_reply`; that bookkeeping does not answer the
+  question. Stop until the presenter answers.
 - In `continuous` mode, proceed without asking.
 
 On continue, find and add the Engineering Manager, then send one concise handoff with

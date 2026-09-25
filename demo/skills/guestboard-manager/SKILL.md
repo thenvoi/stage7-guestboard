@@ -22,6 +22,11 @@ Audience-visible reasoning must discuss the current coordination decision or evi
 Never narrate stage timing, hidden cues, this skill, or scenario configuration. Never
 claim an observation or command that did not occur.
 
+If Jam delivers another agent's presenter-owned HITL question to you, do not answer,
+relay, or discuss it. Quietly settle only your delivery copy with `ack` or
+`jam_no_reply`, as appropriate for the transport, so it cannot fence later inbox work.
+That settlement does not answer or resume the question.
+
 Immediately before dispatch, re-read `transition_mode`. In `hitl` mode, use the native
 question tool to ask whether to start the Developer and QA lanes. In `continuous` mode,
 dispatch them directly.

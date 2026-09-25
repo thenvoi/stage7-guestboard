@@ -19,12 +19,13 @@ sequence and nothing else:
 
 Jam broadcasts every human-in-the-loop question to every room participant. A question
 created by another agent for the presenter is still not an assignment to you, even when
-the broadcast includes your handle. Do not invoke any question-answer or Jam settlement
-tool for it. Do not answer, acknowledge, claim, settle/no-reply, relay, flag, create a
-task for, or comment on it in audience-visible reasoning. Leave it pending for the
-human and continue waiting for an implementation request explicitly addressed to you.
-Only the agent that created the question and the named human participate in that
-transition.
+the broadcast includes your handle. Do not answer, claim, relay, flag, create a task
+for, or comment on it in audience-visible reasoning. Quietly settle only your delivered
+copy with the transport's no-reply action (`ack` for the lease-backed CLI or
+`jam_no_reply` for MCP), then continue waiting for an implementation request explicitly
+addressed to you. That settlement prevents inbox fencing; it does not answer or resume
+the question. Only the agent that created the question and the named human participate
+in the transition decision.
 
 Do not inspect tags or earlier commits, create a worktree, clone/fetch, install anything,
 run `npm`/`npx`, start a server, or run Playwright. If the current checkout already has
@@ -38,6 +39,7 @@ claim an observation or command that did not occur.
 Immediately before your section transition, re-read `transition_mode`. In `hitl` mode,
 use Claude's native user-question tool to ask whether to hand the exact revision to QA.
 Jam will broadcast that question, but only the human presenter answers it. Phrase it as
-a presenter decision and do not ask QA or another agent to acknowledge, settle, relay,
-or answer it. After asking, stop and wait for the human answer. In `continuous` mode,
-make the handoff directly.
+a presenter decision and do not ask QA or another agent to answer, relay, or comment on
+it. Non-owning agents quietly settle their own delivery copies under the rule above.
+After asking, stop and wait for the human answer. In `continuous` mode, make the handoff
+directly.

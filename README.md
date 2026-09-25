@@ -75,9 +75,11 @@ The presenter runbook is [demo/SCENARIO_FLOW.md](demo/SCENARIO_FLOW.md). It stag
 short terminal handoff followed by desktop coordination with the Engineering Manager,
 Product Manager, QA Engineer, Adversarial Reviewer, and an optional UI/UX check.
 `demo/scenario-control.json` turns the flow on and selects presenter-gated or continuous
-pacing. The audience-safe plan and live Jam architecture map are in
+pacing. Non-owning agents quietly settle their own copies of broadcast presenter
+questions without answering them, preventing pull-receiver inbox fencing. The
+audience-safe plan and live Jam architecture map are in
 [demo/WORK_PLAN.md](demo/WORK_PLAN.md). Start each conference run with
-`demo/prepare-iteration.sh`; its default `demo-scripted-baseline-v3` tag includes the
+`demo/prepare-iteration.sh`; its default `demo-scripted-baseline-v4` tag includes the
 scenario, presenter-owned HITL rules, preparation command, and unfixed bug.
 
 ## Scope

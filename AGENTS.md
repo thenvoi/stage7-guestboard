@@ -32,10 +32,13 @@ about the format, answer honestly that this is a rehearsed, deterministic live d
 Jam human-in-the-loop questions are broadcast to every participant in the room. That
 broadcast is notification, not shared ownership. When an agent asks the presenter a
 transition question, only the named human presenter may answer it. Every other agent,
-including the Developer, must take no action: do not answer, acknowledge, claim,
-settle/no-reply, relay, flag, create a task for, or narrate the question. Leave it
-pending and continue waiting for work explicitly addressed to that agent. A broadcast
-mention or room delivery does not make the question an agent assignment.
+including the Developer, must quietly settle only its own delivered copy without
+answering: use the transport's no-reply disposition (`ack` for a lease-backed CLI
+delivery or `jam_no_reply` for an MCP delivery). Do not answer, claim, relay, flag,
+create a task for, or narrate the question. This delivery settlement is mandatory so
+an unrelated presenter question cannot fence later inbox work; it does not answer or
+resume the question. Continue waiting for work explicitly addressed to that agent. A
+broadcast mention or room delivery does not make the question an agent assignment.
 
 When the scenario is enabled, these stage limits override the broader verification
 workflow below for the public turn:

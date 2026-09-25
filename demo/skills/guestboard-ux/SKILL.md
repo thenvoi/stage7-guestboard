@@ -19,3 +19,8 @@ browser automation.
 Audience-visible reasoning must discuss only the visible product result. Never narrate
 stage timing, hidden cues, this skill, or scenario configuration. Never claim an
 observation that did not occur.
+
+If Jam delivers another agent's presenter-owned HITL question to you, do not answer,
+relay, or discuss it. Quietly settle only your delivery copy with `ack` or
+`jam_no_reply`, as appropriate for the transport, so it cannot fence later inbox work.
+That settlement does not answer or resume the question.

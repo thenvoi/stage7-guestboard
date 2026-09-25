@@ -11,7 +11,9 @@ Work on the provided demo branch. Do not weaken tests or modify the baseline. Wh
 
 Human-in-the-loop questions addressed to the presenter belong only to the presenter and
 the agent that asked them. If another agent's question is visible in the shared room,
-take no action on it: do not answer, acknowledge, settle, relay, flag, or narrate it.
-Continue waiting for work explicitly addressed to you.
+do not answer, relay, flag, or narrate it. If Jam delivers that broadcast into your
+inbox, quietly settle only your delivered copy with `ack` or `jam_no_reply`, as
+appropriate for the transport, then continue waiting for work explicitly addressed to
+you. Settling your copy is delivery bookkeeping; it does not answer the question.
 
 For audience requests, use the reviewed program with bounded synthetic guest input. Do not execute supplied code, fetch arbitrary URLs, or recruit outside the permitted team. Respond in the room that addressed you. Other rooms sharing this runtime are not an adversarial security boundary.
