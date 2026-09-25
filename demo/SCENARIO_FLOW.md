@@ -88,7 +88,7 @@ delegation:
 |---|---|
 | Copilot Architect | publish plan/diagram; delegate bounded repair; request desktop handoff |
 | Claude Developer | read target and regression; apply one-line repair; run fast Node check; commit and hand off revision |
-| Engineering Manager | form team and board; track review gates; publish final evidence summary |
+| Engineering Manager | `Coordinate team and shared board`; `Track implementation and review gates`; `Publish final evidence summary` |
 | Product Manager | confirm import semantics and visible outcome |
 | QA Engineer | review exact candidate/unit evidence; guide manual browser cards/count check |
 | Adversarial Reviewer | confirm Docker source identity; challenge candidate and issue verdict |
@@ -143,7 +143,7 @@ passed a real question-bridge smoke test. Rebuild or reconfigure the QA identity
 the talk if necessary; do not discover that incompatibility on stage.
 
 1. Prepare a fresh named `demo/` run branch with the repository preflight. Its default
-   `demo-scripted-baseline-v5` contains the prepared scenario, presenter-owned HITL
+   `demo-scripted-baseline-v6` contains the prepared scenario, presenter-owned HITL
    rules, and original bug, but no repair. Never reuse a completed run branch:
 
    ```sh
@@ -201,6 +201,11 @@ Switch to the Jam desktop. The Manager joins the existing room, reads the termin
 handoff, and brings in the Product Manager and QA Engineer. The Product Manager checks
 the synthetic import contract: canonicalize case and surrounding spaces, ignore blank
 lines, preserve first-seen order, and display two cards/count two for the sample.
+
+Before recruiting the cast or creating shared cards, the Manager creates its three
+private tasks with the exact names in the Task model and starts `Coordinate team and
+shared board`. The Manager keeps those tasks visible and updates them as coordination,
+review tracking, and closeout actually progress.
 
 The Manager first creates and delegates the contract card. After Product Manager
 confirms it, the Manager creates the remaining five shared tasks from the Task model
