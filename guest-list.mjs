@@ -1,6 +1,6 @@
 /** Normalize synthetic guest handles, preserving first-seen order. */
 export function normalizeGuests(handles) {
-  return [...new Set(handles)].map(handle => handle.trim().toLowerCase()).filter(Boolean);
+  return [...new Set(handles.map(handle => handle.trim().toLowerCase()))].filter(Boolean);
 }
 
 export function parseGuestInput(input) {
