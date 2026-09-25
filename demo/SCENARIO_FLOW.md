@@ -81,7 +81,7 @@ These are content contracts, not canned lines. Every result uses observed values
 |---|---|---|
 | terminal intake | Architect → Developer | symptom, sample, expected cards/count, preservation rules, ownership request |
 | Developer accepts | Developer → Architect | brief acceptance of behavior and ownership |
-| presenter switches surfaces | Architect → Engineering Manager | contract, plan/diagram status, active Developer handoff |
+| presenter switches surfaces | Architect → Engineering Manager | contract, plan/diagram status, active Developer handoff, and all three card definitions including owners/components/evidence |
 | work dispatched | Manager → Developer | shared card ID, component, exact scope, committed handoff request |
 | work dispatched | Manager → QA | review card ID, independence rule, exact evidence expectation |
 | QA prepares review | QA → Developer | exact revision and evidence requested |
@@ -104,7 +104,7 @@ Prepare these identities:
 | QA Engineer | Jam-hosted runtime | independent exact-revision review |
 
 1. Run `./demo/prepare-iteration.sh demo/<run-name>` from
-   `demo-scripted-baseline-v9`. Never reuse a repaired branch.
+   `demo-scripted-baseline-v10`. Never reuse a repaired branch.
 2. Put the Architect and Developer on that exact starting revision. Prepare runtime
    access and dependencies before the session.
 3. Offstage, confirm baseline checks pass, retain the expected failing regression, and
@@ -112,6 +112,8 @@ Prepare these identities:
 4. Start Architect and Developer in two terminals in the same fresh room. Confirm the
    Engineering Manager and QA Engineer are discoverable before the public run. Do not
    reuse a room with old messages, tasks, plans, or HITL requests.
+   Read-only repository access may be provided to the Docker Manager, but the Architect
+   handoff remains self-contained and must not depend on that access.
 5. Optionally open the preview on the exact run branch if the presenter wants to show
    the UI; the agent flow does not wait for or ask about it.
 6. Check that `demo/WORK_PLAN.md` renders its plan and software architecture map.
@@ -130,7 +132,8 @@ private run controls.
 handoff; Developer ownership acknowledgement.
 
 **Presenter gate:** Architect asks whether to move to desktop coordination. On continue,
-the Architect adds and briefs the Engineering Manager. On pause, wait.
+the Architect adds and briefs the Engineering Manager, including the exact three shared
+card definitions. On pause, wait.
 
 ## Section 2 — desktop makes ownership shared (about 1 minute)
 
@@ -140,7 +143,8 @@ The Manager enters the existing room and immediately creates its three private t
 starting `Coordinate team and shared board`. It brings in QA, records the Architect's
 accepted contract, creates all three shared cards, completes its first private task,
 starts `Track implementation and review gates`, and directly dispatches Developer and
-QA. There is no additional presenter question.
+QA. It does not request card metadata or plan access. There is no additional presenter
+question.
 
 ## Section 3 — implementation and independent review (about 3 minutes)
 

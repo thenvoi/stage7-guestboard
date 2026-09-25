@@ -1,5 +1,5 @@
 {
-  "schema_version": 8,
+  "schema_version": 9,
   "enabled": true,
   "transition_mode": "hitl",
   "cast": "minimal",

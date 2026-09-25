@@ -84,7 +84,7 @@ pacing. Non-owning agents quietly settle their own copies of broadcast presenter
 questions without answering them, preventing pull-receiver inbox fencing. The
 audience-safe plan and live Jam architecture map are in
 [demo/WORK_PLAN.md](demo/WORK_PLAN.md). Start each conference run with
-`demo/prepare-iteration.sh`; its default `demo-scripted-baseline-v9` tag includes the
+`demo/prepare-iteration.sh`; its default `demo-scripted-baseline-v10` tag includes the
 scenario, presenter-owned HITL rules, preparation command, and unfixed bug.
 
 ## Scope

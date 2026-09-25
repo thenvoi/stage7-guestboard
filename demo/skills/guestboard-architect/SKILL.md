@@ -62,8 +62,18 @@ Use the `transition_mode` value already read from `demo/scenario-control.json`:
 On continue, find and add the Engineering Manager, then send one concise handoff with
 the agreed contract, successful plan/diagram publication, and the Developer's accepted
 scope. Ask the Manager to establish its coordination, review-tracking, and evidence-
-summary tasks, add QA, and create the shared delivery board before dispatch. On pause,
-wait. After either handoff outcome, do not verify implementation,
+summary tasks, add QA, and create the shared delivery board before dispatch. Include
+these authoritative card definitions in that same handoff so a sandboxed Manager does
+not need repository or plan-file access:
+
+1. `Repair normalization order` — Developer — component `guest-normalizer` — normalize
+   before deduplication and return an exact commit plus fast Node result.
+2. `Review core behavior` — QA Engineer — component `guest-normalizer` — review the
+   exact candidate and return a verdict without editing implementation.
+3. `Summarize delivery evidence` — Engineering Manager — no component — publish the
+   contract, revision, Developer result, QA verdict, and limitations.
+
+On pause, wait. After either handoff outcome, do not verify implementation,
 respond to later-phase evidence, or coordinate subsequent phases.
 
 Audience-visible reasoning must discuss only the current engineering decision or

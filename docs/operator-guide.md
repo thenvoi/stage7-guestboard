@@ -3,7 +3,7 @@
 ## Prepare
 
 1. Run `./demo/prepare-iteration.sh demo/<run>`. It starts from
-   `demo-scripted-baseline-v9`, clears known ignored test artifacts, and proves the
+   `demo-scripted-baseline-v10`, clears known ignored test artifacts, and proves the
    expected bug-present state. Never reuse a repaired checkout as the next baseline.
 2. Give each agent a separate disposable clone/workspace and the exact baseline revision. Prepare repository access and dependencies before recording.
 3. Attach the common brief plus each actor's role, or use the runtime's supported per-session instruction path. Supply exact teammate handles privately.

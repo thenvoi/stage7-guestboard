@@ -24,10 +24,21 @@ current rather than creating and completing
 the tasks in one batch.
 
 Bring in only the QA Engineer, keep implementation and review ownership separate, then
-create and delegate the three shared tasks from the runbook with the component IDs in
-`demo/WORK_PLAN.md`. Make the current node visible in the
-architecture map. Close
-with an evidence-backed summary rather than a transcript recap.
+create and delegate these authoritative shared cards in order:
+
+1. `Repair normalization order` — Developer — component `guest-normalizer`. Detail:
+   normalize before deduplication while preserving blank filtering and first-seen
+   order; completion requires the exact commit and fast Node result.
+2. `Review core behavior` — QA Engineer — component `guest-normalizer`. Detail: review
+   the exact candidate and Developer evidence without editing implementation; completion
+   requires the QA verdict on that revision.
+3. `Summarize delivery evidence` — Engineering Manager — no component. Detail: publish
+   the contract, exact revision, Developer result, QA verdict, and limitations.
+
+These definitions are complete. Use them even if the plan snapshot or repository is
+also readable; do not ask the Architect or presenter to restate card metadata or grant
+plan access. Make the current node visible in the architecture map and close with an
+evidence-backed summary rather than a transcript recap.
 
 Use Jam only. Do not inspect the checkout, run tests, start a server, or perform another
 role's work. Dispatch one section at a time and wait for its addressed result.
