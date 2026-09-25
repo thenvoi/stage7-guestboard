@@ -120,7 +120,9 @@ if node --test tests/regression.test.mjs >"$regression_output" 2>&1; then
   cat "$regression_output"
   die "regression unexpectedly passed; this is not the bug-present baseline"
 fi
-if ! grep -Eq '# pass 0$' "$regression_output" || ! grep -Eq '# fail 2$' "$regression_output"; then
+if ! grep -Eq 'tests 2$' "$regression_output" ||
+  ! grep -Eq 'pass 0$' "$regression_output" ||
+  ! grep -Eq 'fail 2$' "$regression_output"; then
   cat "$regression_output"
   die "regression failed for an unexpected reason"
 fi
