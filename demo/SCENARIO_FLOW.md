@@ -135,12 +135,12 @@ paths. Do not put a section gate on a generic ACP profile unless that exact prof
 passed a real question-bridge smoke test. Rebuild or reconfigure the QA identity before
 the talk if necessary; do not discover that incompatibility on stage.
 
-1. Create a fresh named `demo/` run branch from `demo-scripted-baseline-v1`. This tag
-   contains the prepared scenario and the original bug, but no repair. Never reuse a
-   completed run branch:
+1. Prepare a fresh named `demo/` run branch with the repository preflight. Its default
+   `demo-scripted-baseline-v2` contains the prepared scenario, presenter-owned HITL
+   rules, and original bug, but no repair. Never reuse a completed run branch:
 
    ```sh
-   git switch --create demo/<run-name> demo-scripted-baseline-v1
+   ./demo/prepare-iteration.sh demo/<run-name>
    ```
 
 2. Put each implementation/review owner in a prepared disposable workspace at that
@@ -151,9 +151,12 @@ the talk if necessary; do not discover that incompatibility on stage.
 4. Start Copilot Architect and Claude Developer in two terminal windows, attached to
    the same fresh engineering room. Do not reuse a rehearsal room with old messages,
    tasks, plans, or resolved HITL requests. Prepare the managed desktop agents but do
-   not add the full cast to the room yet. Smoke-test one native HITL request for every
-   transition owner in a private preparation room, then clear those requests before
-   the talk.
+   not add the full cast to the room yet. In **Add participants → Coding sessions**,
+   search for Product Manager, QA Engineer, Adversarial Reviewer, and the optional UI
+   UX Designer; every intended role must resolve as an available peer before Section 1.
+   Start or repair a missing identity now rather than discovering it at the Section 5
+   handoff. Smoke-test one native HITL request for every transition owner in a private
+   preparation room, then clear those requests before the talk.
 5. Set the room activity feed to the intended public level. Inspect the visible feed
    for secrets, machine paths, and unrelated context.
 6. In a private rehearsal room, verify that `demo/WORK_PLAN.md` renders both plan and

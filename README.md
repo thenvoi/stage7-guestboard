@@ -43,13 +43,17 @@ Browser checks use a separate loopback port, 4174, and refuse to reuse an unrela
 
 ## Start a fresh iteration
 
-Use the immutable baseline tag, not a previously repaired branch:
+Use the preparation script and immutable scripted baseline, not a previously repaired
+branch:
 
 ```sh
-git fetch origin --tags
-git switch --create demo/2026-09-25-rehearsal-01 demo-baseline-v1
-git push --set-upstream origin HEAD
+./demo/prepare-iteration.sh demo/2026-09-25-rehearsal-01
 ```
+
+The script refuses dirty workspaces, existing branch names, and extra worktrees; clears
+only ignored test artifacts; and proves that baseline checks pass while the two prepared
+regressions fail for the expected bug. It does not delete old branches, create or clear a
+Jam room, start agents, or push.
 
 Choose a new name for every rehearsal or performance. Never reset or force-push another iteration. Never merge a demo branch into `main`. `demo/2026-09-25-stage7` is reserved for the first stage performance, not rehearsal fixes.
 
@@ -72,8 +76,9 @@ short terminal handoff followed by desktop coordination with the Engineering Man
 Product Manager, QA Engineer, Adversarial Reviewer, and an optional UI/UX check.
 `demo/scenario-control.json` turns the flow on and selects presenter-gated or continuous
 pacing. The audience-safe plan and live Jam architecture map are in
-[demo/WORK_PLAN.md](demo/WORK_PLAN.md). Start each conference run on a new `demo/`
-branch from `demo-scripted-baseline-v1`; that tag includes the scenario and unfixed bug.
+[demo/WORK_PLAN.md](demo/WORK_PLAN.md). Start each conference run with
+`demo/prepare-iteration.sh`; its default `demo-scripted-baseline-v2` tag includes the
+scenario, presenter-owned HITL rules, preparation command, and unfixed bug.
 
 ## Scope
 

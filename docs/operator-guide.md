@@ -2,7 +2,9 @@
 
 ## Prepare
 
-1. Start a new `demo/<run>` branch from `demo-baseline-v1`. Never reuse a repaired checkout as the next baseline.
+1. Run `./demo/prepare-iteration.sh demo/<run>`. It starts from
+   `demo-scripted-baseline-v2`, clears known ignored test artifacts, and proves the
+   expected bug-present state. Never reuse a repaired checkout as the next baseline.
 2. Give each agent a separate disposable clone/workspace and the exact baseline revision. Prepare repository access and dependencies before recording.
 3. Attach the common brief plus each actor's role, or use the runtime's supported per-session instruction path. Supply exact teammate handles privately.
 4. Run baseline checks. Run the regression and retain its real nonzero result.
@@ -41,4 +43,8 @@ Record an uncut take and separate short clips. Keep authentication, credentials,
 
 Do not publish raw traces or recordings automatically. Review them before sharing. Label edited waiting time and prerecorded fallback clips honestly.
 
-The in-app Reset button resets browser data only, not source code, branches, agents, tasks, or rooms. A fresh engineering iteration requires a new branch/checkout from the baseline tag. Preserve completed branches rather than force-resetting them. Remove only explicitly owned disposable resources after preserving required evidence.
+The in-app Reset button resets browser data only, not source code, branches, agents,
+tasks, or rooms. A fresh engineering iteration requires
+`demo/prepare-iteration.sh demo/<new-run>` plus a fresh Jam room. Preserve completed
+branches rather than force-resetting them. Remove only explicitly owned disposable
+resources after preserving required evidence.
