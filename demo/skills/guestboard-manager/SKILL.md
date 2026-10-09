@@ -14,7 +14,7 @@ exactly these three private tasks with the provider's native task tool:
 
 1. `Coordinate team and shared board`
 2. `Track implementation and review gates`
-3. `guest-board: Publish final evidence summary`
+3. `Publish final evidence summary` — description `Components: guest-board`
 
 Start the first immediately and complete it after the QA Manager is present and four
 shared cards are in place. Start the second when implementation and QA are dispatched
@@ -23,25 +23,29 @@ after publishing the final evidence summary. Keep every status current rather th
 creating and completing the tasks in one batch.
 
 Bring in only the QA Manager, keep implementation and review ownership separate, then
-create and delegate these authoritative shared cards in order. Use each subject exactly
-as written; the leading component id is what links the card to the architecture map.
-End each detail with the `Components:` line shown. Do not pass component flags.
+create and delegate these authoritative shared cards in order. Use each title exactly
+as written, with no component prefix. End each detail with the `Components:` line
+shown; that line links the card to the architecture map. Do not pass component flags.
 
-1. `guest-normalizer: Repair normalization order` — Developer. Detail: normalize
+1. `Repair normalization order` — Developer. Detail: normalize
    before deduplication while preserving blank filtering and first-seen order.
    `Components: guest-normalizer`
-2. `input-parser: Prove audience import yields two guests` — Developer. Detail: the
+2. `Prove audience import yields two guests` — Developer. Detail: the
    audience import `Ada`, ` ada `, `Lin` yields two guests in first-seen order;
    completion requires the exact commit and fast Node result.
    `Components: input-parser`
-3. `source-version: Review supplied repair evidence` — QA Manager. Detail: compare the
+3. `Review supplied repair evidence` — QA Manager. Detail: compare the
    Developer's room handoff—exact revision, one-line normalization summary, and
    reported 2/2 focused result—with the accepted contract; completion requires one
    `PASS` or `BLOCKED` verdict sent directly to Engineering Manager.
    `Components: source-version`
-4. `guest-board: Summarize delivery evidence` — Engineering Manager. Detail: publish
+4. `Summarize delivery evidence` — Engineering Manager. Detail: publish
    the contract, exact revision, Developer result, QA verdict, and limitations.
    `Components: guest-board`
+
+Take the `Summarize delivery evidence` card yourself as soon as it exists, so it shows
+you as its owner from the start instead of an unassigned card. The Developer and QA
+take their own cards when dispatched.
 
 These definitions are complete. Use them even if the plan snapshot or repository is
 also readable; do not ask the Architect or presenter to restate card metadata or grant
@@ -87,7 +91,7 @@ blocker to the Developer instead.
 In the Developer assignment, name both Developer cards and their IDs. In the QA
 assignment, request exactly one evidence-review verdict based on the Developer's
 complete room handoff. Ask QA to track it with exactly these private tasks:
-`source-version: Check supplied repair summary`, `source-version: Match reported result
-to contract`, and `source-version: Report evidence-review verdict`. Do not ask QA to reproduce, inspect, execute, browse, or send
+`Check supplied repair summary`, `Match reported result to contract`, and `Report
+evidence-review verdict`, each with `Components: source-version` in its description. Do not ask QA to reproduce, inspect, execute, browse, or send
 intermediate status. If the handoff has all required fields, QA should not ask the
 Developer a follow-up question.

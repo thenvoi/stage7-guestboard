@@ -86,10 +86,10 @@ green.
 
 ### How the board links to the map
 
-Clicking a component filters the Work board to tasks whose subject contains that
-component id as a word. Every shared card and every component-related private task
-therefore starts with its component id (`guest-normalizer: …`). Shared cards also carry
-a `Components: <id>` line in their detail. Do not pass `--component` flags to a Band
+Clicking a component filters the Work board to tasks whose subject or description
+contains that component id as a word. Titles stay plain; every shared card and every
+component-related private task carries a `Components: <id>` line in its description
+instead. Do not pass `--component` flags to a Band
 room board; it rejects them. Clicking a layer header matches only the layer id, so the
 filter works on components, not layers.
 
@@ -100,20 +100,23 @@ these four shared cards in order:
 
 | Shared card | Owner | Component | Completion evidence |
 |---|---|---|---|
-| `guest-normalizer: Repair normalization order` | Claude Developer | `guest-normalizer` | the edit: normalize before deduplication |
-| `input-parser: Prove audience import yields two guests` | Claude Developer | `input-parser` | observed `node --test tests/regression.test.mjs` result and exact commit |
-| `source-version: Review supplied repair evidence` | QA Manager | `source-version` | one evidence-review verdict for the exact revision |
-| `guest-board: Summarize delivery evidence` | Engineering Manager | `guest-board` | contract, revision, evidence chain, limitations |
+| `Repair normalization order` | Claude Developer | `guest-normalizer` | the edit: normalize before deduplication |
+| `Prove audience import yields two guests` | Claude Developer | `input-parser` | observed `node --test tests/regression.test.mjs` result and exact commit |
+| `Review supplied repair evidence` | QA Manager | `source-version` | one evidence-review verdict for the exact revision |
+| `Summarize delivery evidence` | Engineering Manager | `guest-board` | contract, revision, evidence chain, limitations |
 
 Live board IDs are authoritative. Each role separately creates its native/private
 tasks and links the applicable one to its shared card.
 
+Private tasks below list their component in parentheses; put it in the task
+description as `Components: <id>`, not in the title.
+
 | Agent | Private/native tasks |
 |---|---|
-| Copilot Architect | `Publish plan and architecture map`; `guest-board: Agree visible contract`; `Request desktop coordination` |
-| Claude Developer | `guest-normalizer: Repair normalization order`; `input-parser: Run audience-import regression`; `source-version: Commit and hand revision to QA` |
-| Engineering Manager | `Coordinate team and shared board`; `Track implementation and review gates`; `guest-board: Publish final evidence summary` |
-| QA Manager | `source-version: Check supplied repair summary`; `source-version: Match reported result to contract`; `source-version: Report evidence-review verdict` |
+| Copilot Architect | `Publish plan and architecture map`; `Agree visible contract` (guest-board); `Request desktop coordination` |
+| Claude Developer | `Repair normalization order` (guest-normalizer); `Run audience-import regression` (input-parser); `Commit and hand revision to QA` (source-version) |
+| Engineering Manager | `Coordinate team and shared board`; `Track implementation and review gates`; `Publish final evidence summary` (guest-board) |
+| QA Manager | `Check supplied repair summary`; `Match reported result to contract`; `Report evidence-review verdict` (all source-version) |
 
 The Manager must visibly maintain its three tasks: complete the first after QA is
 present and all four shared cards are in place, complete the second after QA's
@@ -149,7 +152,7 @@ Prepare these identities:
 | QA Manager | Jam-hosted Claude Code (`claude-opus-5-5`, high) | fast supplied-evidence review |
 
 1. Run `./demo/prepare-iteration.sh demo/<run-name>` from
-   `demo-scripted-baseline-v12`. Never reuse a repaired branch.
+   `demo-scripted-baseline-v13`. Never reuse a repaired branch.
 2. Put the Architect and Developer on that exact starting revision. Prepare runtime
    access and dependencies before the session.
 3. Offstage, confirm baseline checks pass, retain the expected failing regression, and
@@ -197,8 +200,9 @@ card definitions. On pause, wait.
 
 The Manager enters the existing room and immediately creates its three private tasks,
 starting `Coordinate team and shared board`. It brings in QA, records the Architect's
-accepted contract, creates all four component-prefixed shared cards, completes its
-first private task, starts `Track implementation and review gates`, and directly
+accepted contract, creates all four component-linked shared cards, completes its
+first private task, takes the `Summarize delivery evidence` card itself so it is not
+shown as unassigned, starts `Track implementation and review gates`, and directly
 dispatches Developer and QA. It does not request card metadata or plan access and does
 not change the map colors in this section. There is no additional presenter question.
 
@@ -232,7 +236,7 @@ move through In progress to Done with one exact revision attached.
 After QA sends its verdict, no further approval or preview question is required.
 
 Manager completes `Track implementation and review gates`, focuses `guest-board`,
-starts and completes `guest-board: Publish final evidence summary` around the room
+starts and completes `Publish final evidence summary` around the room
 closeout, and summarizes the product contract, exact source revision, Developer unit
 evidence, QA verdict, and limitations. It then completes the summary card and marks
 `guest-board` done. The Manager states that the agreed visible outcome is two

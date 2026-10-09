@@ -29,7 +29,7 @@ Use the provider's private task tool to create exactly these three tasks and kee
 statuses current:
 
 1. `Publish plan and architecture map`
-2. `guest-board: Agree visible contract`
+2. `Agree visible contract` — description `Components: guest-board`
 3. `Request desktop coordination`
 
 Publish the shared plan and its embedded software architecture map:
@@ -73,18 +73,19 @@ the agreed contract, successful plan/diagram publication, and the Developer's ac
 scope. Ask the Manager to establish its coordination, review-tracking, and evidence-
 summary tasks, add QA, and create the shared delivery board before dispatch. Include
 these authoritative card definitions in that same handoff so a sandboxed Manager does
-not need repository or plan-file access. Each subject starts with its architecture
-component id:
+not need repository or plan-file access. Titles stay plain; each card's description
+ends with its `Components:` line:
 
-1. `guest-normalizer: Repair normalization order` — Developer — normalize before
-   deduplication.
-2. `input-parser: Prove audience import yields two guests` — Developer — return the
-   exact commit plus the fast Node result for the audience import.
-3. `source-version: Review supplied repair evidence` — QA Manager — compare the
+1. `Repair normalization order` — Developer — normalize before deduplication.
+   `Components: guest-normalizer`
+2. `Prove audience import yields two guests` — Developer — return the exact commit
+   plus the fast Node result for the audience import. `Components: input-parser`
+3. `Review supplied repair evidence` — QA Manager — compare the
    Developer's exact revision, one-line change summary, and reported 2/2 result with
-   the contract, then return one verdict.
-4. `guest-board: Summarize delivery evidence` — Engineering Manager — publish the
+   the contract, then return one verdict. `Components: source-version`
+4. `Summarize delivery evidence` — Engineering Manager — publish the
    contract, revision, Developer result, QA verdict, and limitations.
+   `Components: guest-board`
 
 Mention that `guest-board` is highlighted in the map for the agreed contract.
 

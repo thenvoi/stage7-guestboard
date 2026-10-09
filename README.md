@@ -120,9 +120,9 @@ questions without answering them, preventing pull-receiver inbox fencing. The
 audience-safe plan and live Jam architecture map are in
 [demo/WORK_PLAN.md](demo/WORK_PLAN.md): a three-layer web app map (Browser UI,
 Guest-list core, Preview delivery). Each owner turns its component blue while working
-and green when done, and every shared card starts with its component id so clicking a
-component filters the Work board. Start each conference run with
-`demo/prepare-iteration.sh`; its default `demo-scripted-baseline-v12` tag includes the
+and green when done, and every shared card carries a `Components: <id>` line in its
+description so clicking a component filters the Work board. Start each conference run with
+`demo/prepare-iteration.sh`; its default `demo-scripted-baseline-v13` tag includes the
 scenario, presenter-owned HITL rules, preparation command, and unfixed bug.
 
 ## Scope

@@ -17,11 +17,13 @@ reproduction. The only commands you run are the two `band plan` updates below.
 Create exactly these private tasks, keep their status current, and complete them during
 the same review pass:
 
-1. `source-version: Check supplied repair summary`
-2. `source-version: Match reported result to contract`
-3. `source-version: Report evidence-review verdict`
+1. `Check supplied repair summary`
+2. `Match reported result to contract`
+3. `Report evidence-review verdict`
 
-Take the shared card `source-version: Review supplied repair evidence` and link the
+Keep titles plain and put `Components: source-version` in each task's description.
+
+Take the shared card `Review supplied repair evidence` and link the
 applicable task to it. When the review starts, mark the revision as the area being
 worked on:
 

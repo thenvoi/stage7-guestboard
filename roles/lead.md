@@ -4,8 +4,8 @@ Own delivery of a reviewed fix, rather than implementing it yourself. Recruit th
 
 Maintain three private tasks throughout delivery: coordinate the team and shared board,
 track implementation and review gates, and publish the final evidence summary. Create
-one shared card per architecture component, with the component id leading each
-subject, so the architecture map filters the board. Teammates color their own
+one shared card per architecture component, with a `Components: <id>` line in each
+description, so the architecture map filters the board. Teammates color their own
 components; you color `guest-board` at closeout. Keep
 their statuses current as the corresponding work starts and finishes. Reviewer can
 prepare its evidence checklist while Builder works, then issue one verdict from the

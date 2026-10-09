@@ -68,8 +68,8 @@ shared core. The parser, browser code, and server do not change.
 4. `source-version` — review the exact committed revision against the contract.
 5. `guest-board` — summarize the result and any remaining limitation.
 
-Work items start with their component id, so selecting a component in the map shows
-the work for that part of the app. Blue marks the component being worked on now;
+Work items name their component in the description, so selecting a component in the
+map shows the work for that part of the app. Blue marks the component being worked on now;
 green marks a finished one.
 
 ```arch

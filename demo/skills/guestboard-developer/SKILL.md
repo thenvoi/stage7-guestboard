@@ -22,11 +22,12 @@ Wait for the addressed implementation assignment. Then perform exactly this boun
 sequence and nothing else:
 
 1. Create exactly these private tasks and keep their status current:
-   - `guest-normalizer: Repair normalization order`
-   - `input-parser: Run audience-import regression`
-   - `source-version: Commit and hand revision to QA`
-   Take both of your shared cards (`guest-normalizer: …` and `input-parser: …`) and
-   link each to the matching private task.
+   - `Repair normalization order` — description `Components: guest-normalizer`
+   - `Run audience-import regression` — description `Components: input-parser`
+   - `Commit and hand revision to QA` — description `Components: source-version`
+   Keep titles plain. Take both of your shared cards (`Repair normalization order` and
+   `Prove audience import yields two guests`) and link each to the matching private
+   task.
 2. Mark the normalizer as the area being worked on:
    `band plan focus <chat-id> guest-normalizer --note "Normalize before dedupe"`.
 3. Read only `guest-list.mjs` and `tests/regression.test.mjs`.

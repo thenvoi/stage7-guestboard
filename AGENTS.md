@@ -61,8 +61,9 @@ workflow below for the public turn:
   the prepared one-line repair, run only `node --test tests/regression.test.mjs`, and
   commit the result, plus the `band` board and plan updates in its role skill.
 - Each owner colors only its own architecture-map component, as its role skill
-  specifies. Shared cards and component-related private tasks start with their
-  component id so the map can filter them.
+  specifies. Shared cards and component-related private tasks carry a
+  `Components: <id>` line in their description so the map can filter them; their
+  titles stay plain.
 - Use the current prepared checkout. If it is not the expected bug-present stage branch,
   stop and ask the presenter instead of repairing the demo environment.
 - Complete only the assigned section, send its required handoff, and wait. Do not pull
