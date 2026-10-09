@@ -22,17 +22,29 @@ Wait for the addressed implementation assignment. Then perform exactly this boun
 sequence and nothing else:
 
 1. Create exactly these private tasks and keep their status current:
-   - `Repair guest normalization order`
-   - `Run regression and commit repair`
-   - `Hand exact revision to QA`
-   Accept and link the shared card to the applicable task.
-2. Read only `guest-list.mjs` and `tests/regression.test.mjs`.
-3. Make the prepared one-line normalization-before-deduplication repair.
-4. Run only `node --test tests/regression.test.mjs`.
-5. Commit the change and hand QA all four evidence-review inputs in one message: exact
+   - `guest-normalizer: Repair normalization order`
+   - `input-parser: Run audience-import regression`
+   - `source-version: Commit and hand revision to QA`
+   Take both of your shared cards (`guest-normalizer: …` and `input-parser: …`) and
+   link each to the matching private task.
+2. Mark the normalizer as the area being worked on:
+   `band plan focus <chat-id> guest-normalizer --note "Normalize before dedupe"`.
+3. Read only `guest-list.mjs` and `tests/regression.test.mjs`.
+4. Make the prepared one-line normalization-before-deduplication repair, then run
+   `band plan status <chat-id> guest-normalizer done --note "<one-line change>"`.
+5. Run `band plan focus <chat-id> input-parser --note "Audience import regression"`,
+   then run only `node --test tests/regression.test.mjs`.
+6. If it passes, run
+   `band plan status <chat-id> input-parser done --note "<observed pass/fail counts>"`;
+   if it fails, mark `input-parser` `blocked` with the observed counts and report the
+   failure instead of committing.
+7. Commit the change and hand QA all four evidence-review inputs in one message: exact
    revision; one-line normalization-before-deduplication summary; confirmation that
    blank filtering and first-seen order remain; and the observed
-   `node --test tests/regression.test.mjs` result.
+   `node --test tests/regression.test.mjs` result. Leave `source-version` for QA to
+   color.
+
+Notes on the map state only what has actually happened, using observed values.
 
 Jam broadcasts every human-in-the-loop question to every room participant. A question
 created by another agent for the presenter is still not an assignment to you, even when

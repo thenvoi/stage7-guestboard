@@ -74,6 +74,41 @@ Some coding runtimes cannot attach Jam Role files directly. In that case, provid
 
 See [the operator guide](docs/operator-guide.md) for the task, source handoff, preview, reset, and recording procedure. The complete Jam performance's live-provider validation is maintained separately; this repository alone does not establish its readiness.
 
+## Jam-hosted agents
+
+The Engineering Manager and QA Manager run as Band-owned agents in the presenter's
+account. `demo/jam-agents.sh` creates them, keeps their settings current, and removes
+them:
+
+```sh
+./demo/jam-agents.sh --check            # report presence and current settings
+./demo/jam-agents.sh                    # create missing agents, update existing ones
+./demo/jam-agents.sh --restart          # also restart their rooms so changes apply now
+./demo/jam-agents.sh --cleanup          # show which agents would be deleted
+./demo/jam-agents.sh --cleanup --yes    # delete the Band agents and local records
+```
+
+The account comes from the environment or from a git-ignored `.env.jam-agents` in the
+repository root; copy [demo/jam-agents.env.example](demo/jam-agents.env.example) to
+start. `JAM_CONFIG_DIR` is required and selects the Band app directory (and therefore
+the account); `JAM_PROFILE`, `JAM_BAND_URL`, `JAM_AGENT_OWNER`, and
+`JAM_AGENTS_ACTION` are optional. The Band daemon for that directory must be running.
+
+The roster lives in [demo/jam-agents.conf](demo/jam-agents.conf). Each agent has a
+name, description, transport, model, reasoning effort, permission settings, and a
+linked instructions file (its role skill):
+
+| Agent | Runtime | Model / effort | Permissions |
+|---|---|---|---|
+| `engineering-manager` | Codex (`codex-app-server`) | `gpt-5.6-sol` / high | approval `never`, `danger-full-access` |
+| `qa-manager` | Claude Code (`claude-code-cli`) | `claude-opus-5-5` / high | `bypassPermissions` |
+
+Any roster value can be overridden through the environment or `.env.jam-agents`, for
+example `qa_EFFORT=medium`. Precedence is environment, then env file, then roster.
+Instructions are linked, not copied: edits reach new rooms immediately and existing
+rooms after `--restart`. Cleanup only touches the handles in the roster. Do not commit
+`.env.jam-agents` or other account details.
+
 ## Conference scenario
 
 The presenter runbook is [demo/SCENARIO_FLOW.md](demo/SCENARIO_FLOW.md). It stages a
@@ -83,8 +118,11 @@ and QA Manager.
 pacing. Non-owning agents quietly settle their own copies of broadcast presenter
 questions without answering them, preventing pull-receiver inbox fencing. The
 audience-safe plan and live Jam architecture map are in
-[demo/WORK_PLAN.md](demo/WORK_PLAN.md). Start each conference run with
-`demo/prepare-iteration.sh`; its default `demo-scripted-baseline-v11` tag includes the
+[demo/WORK_PLAN.md](demo/WORK_PLAN.md): a three-layer web app map (Browser UI,
+Guest-list core, Preview delivery). Each owner turns its component blue while working
+and green when done, and every shared card starts with its component id so clicking a
+component filters the Work board. Start each conference run with
+`demo/prepare-iteration.sh`; its default `demo-scripted-baseline-v12` tag includes the
 scenario, presenter-owned HITL rules, preparation command, and unfixed bug.
 
 ## Scope

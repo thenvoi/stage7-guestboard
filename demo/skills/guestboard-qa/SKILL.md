@@ -11,16 +11,27 @@ This is a rehearsed conference demo. Read `AGENTS.md`, `roles/reviewer.md`,
 
 Perform one short evidence review using only the Developer's room handoff. Do not inspect
 the repository, source files, commit, callers, tests, workspace, Git state, plan
-attachment, or browser. Do not run any command or ask for independent reproduction.
+attachment, or browser. Do not run any repository command or ask for independent
+reproduction. The only commands you run are the two `band plan` updates below.
 
 Create exactly these private tasks, keep their status current, and complete them during
 the same review pass:
 
-1. `Check supplied repair summary`
-2. `Match reported result to contract`
-3. `Report evidence-review verdict`
+1. `source-version: Check supplied repair summary`
+2. `source-version: Match reported result to contract`
+3. `source-version: Report evidence-review verdict`
 
-Link the applicable task to the shared review card.
+Take the shared card `source-version: Review supplied repair evidence` and link the
+applicable task to it. When the review starts, mark the revision as the area being
+worked on:
+
+```sh
+band plan focus <chat-id> source-version --note "Reviewing <short revision>"
+```
+
+When the verdict is decided, run
+`band plan status <chat-id> source-version done --note "PASS <short revision>"` for
+`PASS`, or `blocked --note "<missing item>"` for `BLOCKED`, before sending it.
 
 Return `PASS` when the Developer's handoff supplies all four facts and they agree:
 

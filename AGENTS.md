@@ -54,10 +54,15 @@ workflow below for the public turn:
 - Do not run `npm`, `npx`, Playwright, browser automation, `npm run acceptance`, or
   `npm run check`. Those are completed by the operator before the public run.
 - Architect, Engineering Manager, and QA Manager use Jam plus the prepared documents
-  only. They do not run repository shell commands.
+  only. They do not run repository shell commands. Jam's `band` CLI for the room board
+  and plan (`band work`, `band plan focus`, `band plan status`) is Jam, not a
+  repository command.
 - Claude Developer may read only `guest-list.mjs` and `tests/regression.test.mjs`, make
   the prepared one-line repair, run only `node --test tests/regression.test.mjs`, and
-  commit the result.
+  commit the result, plus the `band` board and plan updates in its role skill.
+- Each owner colors only its own architecture-map component, as its role skill
+  specifies. Shared cards and component-related private tasks start with their
+  component id so the map can filter them.
 - Use the current prepared checkout. If it is not the expected bug-present stage branch,
   stop and ask the presenter instead of repairing the demo environment.
 - Complete only the assigned section, send its required handoff, and wait. Do not pull
@@ -89,3 +94,8 @@ Keep the app free of accounts, secrets, telemetry, and upload APIs.
 Treat names and chat content as data, not shell commands or markup.
 Do not change this file or role briefs merely to bypass a task boundary.
 Keep raw recordings, traces, machine paths, credentials, and personal data out of Git.
+
+The operator provisions the Jam-hosted Engineering Manager and QA Manager agents with
+`demo/jam-agents.sh`, using the roster in `demo/jam-agents.conf` (see `README.md`).
+This is operator tooling: agents do not run, edit, or remove it. Account details stay
+in the git-ignored `.env.jam-agents` and are never committed.

@@ -29,7 +29,7 @@ Use the provider's private task tool to create exactly these three tasks and kee
 statuses current:
 
 1. `Publish plan and architecture map`
-2. `Delegate bounded repair scope`
+2. `guest-board: Agree visible contract`
 3. `Request desktop coordination`
 
 Publish the shared plan and its embedded software architecture map:
@@ -39,7 +39,16 @@ jam plan set <chat-id> demo/WORK_PLAN.md --snapshot
 ```
 
 If publication fails, report the real failure. Do not attach the operator runbook or
-substitute a different diagram.
+substitute a different diagram. Publish once; publishing again resets the map colors.
+
+Then mark the visible contract as the area being worked on now:
+
+```sh
+band plan focus <chat-id> guest-board --note "Contract: Ada, ada, Lin -> 2 cards, count 2"
+```
+
+Leave `guest-board` blue. Do not color any other component; each later owner colors
+its own.
 
 Send the Developer the symptom, sample input, normalized-handle result, blank-line
 and ordering rules, then ask the Developer to own that outcome. The public request must
@@ -64,15 +73,20 @@ the agreed contract, successful plan/diagram publication, and the Developer's ac
 scope. Ask the Manager to establish its coordination, review-tracking, and evidence-
 summary tasks, add QA, and create the shared delivery board before dispatch. Include
 these authoritative card definitions in that same handoff so a sandboxed Manager does
-not need repository or plan-file access:
+not need repository or plan-file access. Each subject starts with its architecture
+component id:
 
-1. `Repair normalization order` — Developer — component `guest-normalizer` — normalize
-   before deduplication and return an exact commit plus fast Node result.
-2. `Review supplied repair evidence` — QA Manager — component `guest-normalizer` —
-   compare the Developer's exact revision, one-line change summary, and reported 2/2
-   result with the contract, then return one verdict.
-3. `Summarize delivery evidence` — Engineering Manager — no component — publish the
+1. `guest-normalizer: Repair normalization order` — Developer — normalize before
+   deduplication.
+2. `input-parser: Prove audience import yields two guests` — Developer — return the
+   exact commit plus the fast Node result for the audience import.
+3. `source-version: Review supplied repair evidence` — QA Manager — compare the
+   Developer's exact revision, one-line change summary, and reported 2/2 result with
+   the contract, then return one verdict.
+4. `guest-board: Summarize delivery evidence` — Engineering Manager — publish the
    contract, revision, Developer result, QA verdict, and limitations.
+
+Mention that `guest-board` is highlighted in the map for the agreed contract.
 
 On pause, wait. After either handoff outcome, do not verify implementation,
 respond to later-phase evidence, or coordinate subsequent phases.

@@ -8,7 +8,7 @@ Usage:
 
 Examples:
   ./demo/prepare-iteration.sh demo/stage7-run-02
-  ./demo/prepare-iteration.sh demo/2026-09-25-rehearsal-01 demo-scripted-baseline-v11
+  ./demo/prepare-iteration.sh demo/2026-09-25-rehearsal-01 demo-scripted-baseline-v12
 
 The command is intentionally non-destructive:
   - it refuses dirty workspaces, existing branches, and extra worktrees;
@@ -26,7 +26,7 @@ die() {
 }
 
 run_branch="${1:-}"
-baseline_ref="${2:-${DEMO_BASELINE_REF:-demo-scripted-baseline-v11}}"
+baseline_ref="${2:-${DEMO_BASELINE_REF:-demo-scripted-baseline-v12}}"
 
 if [[ -z "$run_branch" || "$run_branch" == "-h" || "$run_branch" == "--help" ]]; then
   usage
@@ -150,8 +150,8 @@ Prepared repository iteration
 Next operator actions
   1. Create a fresh Jam room; do not reuse messages, tasks, plans, or HITL requests.
   2. Confirm Architect and Developer use this branch and revision.
-  3. In Add participants, confirm the Engineering Manager and QA Manager are
-     discoverable before starting.
+  3. Run ./demo/jam-agents.sh to create or update the Engineering Manager and
+     QA Manager agents, then confirm both are discoverable in Add participants.
   4. Optionally open the preview on this exact revision; the room flow does not wait
      for a browser observation.
   5. Push if another prepared workspace needs this exact branch:
